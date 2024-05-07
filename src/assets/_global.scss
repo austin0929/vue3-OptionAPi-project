@@ -1,0 +1,71 @@
+body {
+    font-family: "Noto Sans TC", sans-serif !important;
+    font-optical-sizing: auto !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+.btn-primary {
+    &:hover {
+        background: white !important;
+        color: #CA0808 !important;
+    }
+}
+
+.btn-dark {
+    &:hover {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+.cardHover {
+    transition: transform 0.3s ease;
+}
+
+.cardHover:hover {
+    transform: scale(1.1);
+}
+
+.scrollTop {
+    position: fixed;
+    bottom: 40px;
+    right: 50px;
+    border: none;
+    background-color: transparent;
+    transition: transform 0.3s ease;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+.navBarHover:hover {
+    color: #ca0808 !important;
+}
+
+.scrollTop:hover {
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
+
+    @media (max-width: 768px) {
+        transform: scale(1.2);
+    }
+}

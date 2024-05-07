@@ -1,0 +1,14 @@
+@import 'bootstrap/scss/functions';
+
+@import './variables';
+@import './global';
+@import './admin/adminProducts';
+@import './user/about';
+@import './user/products';
+@import './user/product';
+@import './user/swiper';
+@import './user/layoutBanner';
+@import './user/index';
+@import './loading';
+
+@import 'bootstrap/scss/bootstrap.scss';

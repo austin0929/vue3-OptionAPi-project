@@ -1,0 +1,17 @@
+.productSelect {
+    width: 25%;
+}
+
+.productLinkHover {
+    color: #54595F;
+}
+
+.productLinkHover:hover {
+    color: #CA0808;
+}
+
+@media (max-width: 768px) {
+    .productSelect {
+        width: 100%;
+    }
+}

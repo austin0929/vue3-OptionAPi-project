@@ -12,7 +12,7 @@ export default defineStore('cartStore', {
     totalPrice: {}
   }),
   actions: {
-    getCart () {
+    getCart() {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`
       axios.get(api)
         .then((res) => {
@@ -30,7 +30,7 @@ export default defineStore('cartStore', {
           }
         })
     },
-    addToCart (product, qty = 1) {
+    addToCart(product, qty = 1) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`
       const cart = {
         product_id: product.id,
@@ -55,7 +55,7 @@ export default defineStore('cartStore', {
           }
         })
     },
-    delCartProduct (product) {
+    delCartProduct(product) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${product.id}`
       axios.delete(api)
         .then((res) => {
@@ -69,7 +69,7 @@ export default defineStore('cartStore', {
           }
         })
     },
-    delAllCart () {
+    delAllCart() {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`
       axios.delete(api)
         .then((res) => {
@@ -96,7 +96,7 @@ export default defineStore('cartStore', {
           }
         })
     },
-    updateQty (cart, isAddOrDelNum) {
+    updateQty(cart, isAddOrDelNum) {
       this.isAddOrDelNum = isAddOrDelNum
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${cart.id}`
       if (this.isAddOrDelNum) {

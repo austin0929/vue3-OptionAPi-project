@@ -80,26 +80,28 @@
                   :src="product.imageUrl"
                   class="card-img-top rounded mb-3 object-fit-cover cardHover"
                 />
-              </router-link>
-              <a href="#" class="p-2 bookmark-icon">
-                <i class="bi bi-heart-fill" @click.prevent="addBookmark(product)"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4>{{ product.title }}</h4>
-                <p class="card-text text-muted mb-2 text-truncate">
-                  {{ product.description }}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <span class="text-primary fw-bold me-2">$ {{ product.origin_price }}</span>
-                    <p class="mb-0 text-muted text-end d-inline-block">
-                      <del>${{ product.origin_price }}</del>
-                    </p>
+                <div class="card-body p-0">
+                  <h4>{{ product.title }}</h4>
+                  <p class="card-text text-muted mb-2 text-truncate">
+                    {{ product.description }}
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <span class="text-primary fw-bold me-2">$ {{ product.origin_price }}</span>
+                      <p class="mb-0 text-muted text-end d-inline-block">
+                        <del>${{ product.origin_price }}</del>
+                      </p>
+                    </div>
+                    <a href="#" class="btn btn-primary" @click.prevent="addToCart(product)">
+                      <i class="bi bi-handbag"></i>
+                    </a>
                   </div>
-                  <button type="button" class="btn btn-primary" @click="addToCart(product)">
-                    <i class="bi bi-handbag"></i>
-                  </button>
                 </div>
+              </router-link>
+              <div>
+                <a href="#" class="p-2 bookmark-icon">
+                  <i class="bi bi-heart-fill" @click.prevent="addBookmark(product)"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -123,7 +125,7 @@ export default {
     Pagination,
     BannerSection
   },
-  data () {
+  data() {
     return {
       products: [],
       searchKeyword: '',
@@ -136,7 +138,7 @@ export default {
   methods: {
     ...mapActions(bookmarkStore, ['addBookmark']),
     ...mapActions(cartStore, ['addToCart']),
-    getProducts (page = 1) {
+    getProducts(page = 1) {
       this.isLoading = true
       const { category = '' } = this.$route.query
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=${category}&page=${page}`
@@ -158,7 +160,7 @@ export default {
           }
         })
     },
-    searchProduct () {
+    searchProduct() {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products/all`
       this.$http
         .get(api)
@@ -175,7 +177,7 @@ export default {
           }
         })
     },
-    sortedProducts () {
+    sortedProducts() {
       let getSortPrice = ''
       this.products.sort((a, b) => {
         if (this.selectPrice === '1') {
@@ -188,22 +190,22 @@ export default {
     }
   },
   computed: {
-    sortPrice () {
+    sortPrice() {
       return this.sortedProducts()
     }
   },
   watch: {
     '$route.query': {
-      handler () {
+      handler() {
         this.getProducts()
       },
       deep: true
     },
-    searchKeyword (getVal) {
+    searchKeyword(getVal) {
       this.searchProduct(getVal)
     }
   },
-  created () {
+  created() {
     this.getProducts()
     this.searchProduct()
   }

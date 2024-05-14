@@ -122,7 +122,7 @@ export default {
   components: {
     BannerSection
   },
-  data () {
+  data() {
     return {
       order: {},
       orderId: '',
@@ -130,7 +130,7 @@ export default {
     }
   },
   methods: {
-    getOrder () {
+    getOrder() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order/${this.orderId}`
       this.$http
@@ -149,7 +149,7 @@ export default {
           }
         })
     },
-    payOrder () {
+    payOrder() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/pay/${this.orderId}`
       this.$http
@@ -168,7 +168,7 @@ export default {
         })
     }
   },
-  mounted () {
+  mounted() {
     this.orderId = this.$route.params.id
     this.getOrder()
   }

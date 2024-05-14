@@ -65,7 +65,7 @@ export default {
     BannerSection,
     PaginationComponent
   },
-  data () {
+  data() {
     return {
       articles: [],
       pagination: {},
@@ -73,7 +73,7 @@ export default {
     }
   },
   methods: {
-    getBlogs (page = 1) {
+    getBlogs(page = 1) {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/articles?page=${page}`
       this.$http
@@ -93,11 +93,11 @@ export default {
           }
         })
     },
-    toBlog (article) {
+    toBlog(article) {
       this.$router.push(`/blog/${article.id}`)
     }
   },
-  mounted () {
+  mounted() {
     this.getBlogs()
   }
 }

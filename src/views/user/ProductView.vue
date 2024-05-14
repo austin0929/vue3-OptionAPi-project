@@ -58,7 +58,7 @@
                       class="btn btn-light border-end rounded-0 py-2"
                       type="button"
                       id="button-addon1"
-                      @click="this.productQty > 1 ? this.productQty-- : 1"
+                      @click="productQty > 1 ? productQty-- : 1"
                     >
                       <i class="bi bi-dash"></i>
                     </button>
@@ -69,14 +69,14 @@
                     aria-label="Example text with button addon"
                     aria-describedby="button-addon1"
                     min="1"
-                    v-model="this.productQty"
+                    v-model="productQty"
                   />
                   <div class="input-group-append">
                     <button
                       class="btn btn-light rounded-0 border-start py-2"
                       type="button"
                       id="button-addon2"
-                      @click="this.productQty++"
+                      @click="productQty++"
                     >
                       <i class="bi bi-plus"></i>
                     </button>
@@ -87,7 +87,7 @@
                 <a
                   href="#"
                   class="text-nowrap btn w-100 py-2 btn-primary"
-                  @click.prevent="addToCart(product, this.productQty)"
+                  @click.prevent="addToCart(product, productQty)"
                   >加入購物車</a
                 >
               </div>

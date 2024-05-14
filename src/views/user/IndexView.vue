@@ -238,7 +238,7 @@ export default {
     Swiper,
     SwiperSlide
   },
-  setup () {
+  setup() {
     const onSwiper = () => {}
     const onSlideChange = () => {}
     return {
@@ -247,7 +247,7 @@ export default {
       modules: [A11y, Autoplay]
     }
   },
-  data () {
+  data() {
     return {
       products: [],
       randomProducts: [],
@@ -257,7 +257,7 @@ export default {
   methods: {
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(bookmarkStore, ['getBookmark', 'addBookmark']),
-    getProducts () {
+    getProducts() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products`
       this.$http
@@ -276,7 +276,7 @@ export default {
           }
         })
     },
-    getRandomProducts () {
+    getRandomProducts() {
       const newRandomProducts = this.products.slice(0)
       const randomItems = []
       let index
@@ -291,13 +291,13 @@ export default {
   },
   watch: {
     products: {
-      handler () {
+      handler() {
         this.getRandomProducts()
       },
       deep: true
     }
   },
-  mounted () {
+  mounted() {
     this.getProducts()
     this.getBookmark()
   }

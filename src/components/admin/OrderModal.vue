@@ -110,14 +110,14 @@
 import modalMixins from '@/mixins/modalMixins'
 export default {
   props: ['order'],
-  data () {
+  data() {
     return {
       modal: null,
       tempOrder: {}
     }
   },
   watch: {
-    order () {
+    order() {
       this.tempOrder = this.order
     }
   },

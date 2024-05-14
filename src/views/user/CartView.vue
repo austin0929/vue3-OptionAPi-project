@@ -152,7 +152,7 @@ export default {
   components: {
     BannerSection
   },
-  data () {
+  data() {
     return {
       isAddOrDelNum: false,
       cartData: {},
@@ -164,7 +164,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'delCartProduct', 'delAllCart', 'updateQty']),
-    addCoupon () {
+    addCoupon() {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/coupon`
       const couponCode = {
         code: this.coupon
@@ -183,11 +183,11 @@ export default {
           }
         })
     },
-    toCheckout () {
+    toCheckout() {
       this.$router.push('/checkout')
     }
   },
-  mounted () {
+  mounted() {
     this.getCart()
   }
 }

@@ -151,7 +151,7 @@ export default {
   components: {
     BannerSection
   },
-  data () {
+  data() {
     return {
       carts: [],
       totalPrice: {},
@@ -168,7 +168,7 @@ export default {
     }
   },
   methods: {
-    getCart () {
+    getCart() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`
       this.$http
@@ -191,7 +191,7 @@ export default {
           }
         })
     },
-    sendOrder () {
+    sendOrder() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order`
       this.$http
@@ -212,12 +212,12 @@ export default {
           }
         })
     },
-    isPhone (value) {
+    isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/
       return phoneNumber.test(value) ? true : '需要正確的電話號碼'
     }
   },
-  mounted () {
+  mounted() {
     this.getCart()
   }
 }

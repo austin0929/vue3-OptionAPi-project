@@ -74,7 +74,7 @@ export default {
   components: {
     BannerSection
   },
-  data () {
+  data() {
     return {
       articleId: '',
       article: {},
@@ -82,7 +82,7 @@ export default {
     }
   },
   methods: {
-    getBlog () {
+    getBlog() {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/article/${this.articleId}`
       this.$http
@@ -102,7 +102,7 @@ export default {
         })
     }
   },
-  mounted () {
+  mounted() {
     this.articleId = this.$route.params.id
     this.getBlog()
   }

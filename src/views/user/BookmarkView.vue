@@ -76,7 +76,7 @@ export default {
   computed: {
     ...mapState(bookmarkStore, ['bookmark', 'bookmarkDate'])
   },
-  mounted () {
+  mounted() {
     this.getBookmark()
   }
 }

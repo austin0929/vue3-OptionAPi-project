@@ -32,6 +32,7 @@
               <a href="#" class="nav-item nav-link me-4 navBarHover"
                 ><i class="bi bi-heart position-relative text-light navBarHover">
                   <span
+                    style="padding-left: 6px"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                     v-if="!bookmark.length == 0"
                     >{{ bookmark.length }}
@@ -44,6 +45,7 @@
             <a href="#" class="nav-item nav-link me-4 navBarHover" @click.prevent="haveCartData"
               ><i class="bi bi-cart3 position-relative text-light navBarHover">
                 <span
+                  style="padding-left: 6px"
                   class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                   v-if="!carts.length == 0"
                 >
@@ -51,7 +53,6 @@
                   <span class="visually-hidden">unread messages</span>
                 </span></i
               ></a
-            >
             >
           </div>
         </div>
@@ -72,7 +73,7 @@ export default {
   methods: {
     ...mapActions(bookmarkStore, ['getBookmark']),
     ...mapActions(cartStore, ['getCart']),
-    haveCartData () {
+    haveCartData() {
       if (this.carts.length === 0) {
         this.$swal('購物車無資料', '請先選購商品', 'error')
         return
@@ -80,7 +81,7 @@ export default {
       this.$router.push('/cart')
     }
   },
-  mounted () {
+  mounted() {
     this.getBookmark()
     this.getCart()
   }

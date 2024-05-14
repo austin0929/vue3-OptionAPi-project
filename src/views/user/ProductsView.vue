@@ -14,7 +14,7 @@
     </div>
   </VueLoading>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -30,7 +30,6 @@
     </div>
   </div>
 
-  <!-- products -->
   <div class="container">
     <div class="row">
       <div class="col-lg-3 mb-3">
@@ -97,7 +96,7 @@
                       <del>${{ product.origin_price }}</del>
                     </p>
                   </div>
-                  <button type="type" class="btn btn-primary" @click.prevent="addToCart(product)">
+                  <button type="button" class="btn btn-primary" @click="addToCart(product)">
                     <i class="bi bi-handbag"></i>
                   </button>
                 </div>
@@ -112,19 +111,19 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import Pagination from '@/components/PaginationComponent.vue'
 import cartStore from '@/stores/cartStore.js'
 import bookmarkStore from '@/stores/bookmarkStore.js'
 import { mapActions } from 'pinia'
 import BannerSection from '@/components/layout/BannerSection.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
     Pagination,
     BannerSection
   },
-  data() {
+  data () {
     return {
       products: [],
       searchKeyword: '',
@@ -137,7 +136,7 @@ export default {
   methods: {
     ...mapActions(bookmarkStore, ['addBookmark']),
     ...mapActions(cartStore, ['addToCart']),
-    getProducts(page = 1) {
+    getProducts (page = 1) {
       this.isLoading = true
       const { category = '' } = this.$route.query
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=${category}&page=${page}`
@@ -150,7 +149,7 @@ export default {
             this.pagination = res.data.pagination
             setTimeout(() => {
               this.isLoading = false
-            }, 500)
+            }, 800)
           }
         })
         .catch((err) => {
@@ -159,7 +158,7 @@ export default {
           }
         })
     },
-    searchProduct() {
+    searchProduct () {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products/all`
       this.$http
         .get(api)
@@ -176,7 +175,7 @@ export default {
           }
         })
     },
-    sortedProducts() {
+    sortedProducts () {
       let getSortPrice = ''
       this.products.sort((a, b) => {
         if (this.selectPrice === '1') {
@@ -189,22 +188,22 @@ export default {
     }
   },
   computed: {
-    sortPrice() {
+    sortPrice () {
       return this.sortedProducts()
     }
   },
   watch: {
     '$route.query': {
-      handler() {
+      handler () {
         this.getProducts()
       },
       deep: true
     },
-    searchKeyword(getVal) {
+    searchKeyword (getVal) {
       this.searchProduct(getVal)
     }
   },
-  created() {
+  created () {
     this.getProducts()
     this.searchProduct()
   }

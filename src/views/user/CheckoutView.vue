@@ -14,7 +14,7 @@
     </div>
   </VueLoading>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -32,7 +32,6 @@
     </div>
   </div>
 
-  <!-- userdata -->
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -145,14 +144,14 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import BannerSection from '@/components/layout/BannerSection.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
     BannerSection
   },
-  data() {
+  data () {
     return {
       carts: [],
       totalPrice: {},
@@ -169,7 +168,7 @@ export default {
     }
   },
   methods: {
-    getCart() {
+    getCart () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`
       this.$http
@@ -192,7 +191,7 @@ export default {
           }
         })
     },
-    sendOrder() {
+    sendOrder () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order`
       this.$http
@@ -213,12 +212,12 @@ export default {
           }
         })
     },
-    isPhone(value) {
+    isPhone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/
       return phoneNumber.test(value) ? true : '需要正確的電話號碼'
     }
   },
-  mounted() {
+  mounted () {
     this.getCart()
   }
 }

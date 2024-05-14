@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -16,7 +16,6 @@
     </div>
   </div>
 
-  <!-- bookmark -->
   <div class="container">
     <div class="mb-5" style="min-width: 300px; overflow-x: auto">
       <table class="table" style="width: 1100px">
@@ -49,7 +48,7 @@
             <td>{{ bookmarkDate }}</td>
             <td>$ {{ mark.origin_price }}</td>
             <td class="text-end">
-              <button type="button" class="btn btn-primary" @click.prevent="addToCart(mark)">
+              <button type="button" class="btn btn-primary" @click="addToCart(mark)">
                 加入購物車
               </button>
             </td>
@@ -77,7 +76,7 @@ export default {
   computed: {
     ...mapState(bookmarkStore, ['bookmark', 'bookmarkDate'])
   },
-  mounted() {
+  mounted () {
     this.getBookmark()
   }
 }

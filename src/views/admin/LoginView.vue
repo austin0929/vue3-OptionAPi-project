@@ -35,7 +35,7 @@
 const { VITE_APP_URL } = import.meta.env
 
 export default {
-  data() {
+  data () {
     return {
       user: {
         username: '',
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    signIn() {
+    signIn () {
       const api = `${VITE_APP_URL}/admin/signin`
       this.$http
         .post(api, this.user)

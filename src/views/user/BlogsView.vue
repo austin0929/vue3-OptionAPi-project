@@ -14,7 +14,7 @@
     </div>
   </VueLoading>
   <div class="position-relative py-8 mb-md-6 mb-5">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -30,7 +30,6 @@
     </div>
   </div>
 
-  <!-- blog -->
   <div class="container">
     <div class="row justify-content-center mb-lg-5 mb-1">
       <div class="col-lg-10 mb-4" v-for="article in articles" :key="article.id">
@@ -58,15 +57,15 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import BannerSection from '@/components/layout/BannerSection.vue'
 import PaginationComponent from '@/components/PaginationComponent.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
     BannerSection,
     PaginationComponent
   },
-  data() {
+  data () {
     return {
       articles: [],
       pagination: {},
@@ -74,7 +73,7 @@ export default {
     }
   },
   methods: {
-    getBlogs(page = 1) {
+    getBlogs (page = 1) {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/articles?page=${page}`
       this.$http
@@ -94,11 +93,11 @@ export default {
           }
         })
     },
-    toBlog(article) {
+    toBlog (article) {
       this.$router.push(`/blog/${article.id}`)
     }
   },
-  mounted() {
+  mounted () {
     this.getBlogs()
   }
 }

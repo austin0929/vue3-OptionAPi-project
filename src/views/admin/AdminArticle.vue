@@ -15,7 +15,9 @@
   </VueLoading>
   <div class="container">
     <div class="text-end my-4">
-      <button class="btn btn-lg btn-primary" @click.prevent="openArticleModal">新增文章</button>
+      <button class="btn btn-lg btn-primary" type="button" @click="openArticleModal">
+        新增文章
+      </button>
     </div>
     <table class="table table-striped productTable">
       <thead>
@@ -72,11 +74,11 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import ArticleModal from '@/components/admin/ArticleModal.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
-  data() {
+  data () {
     return {
       tempArticle: {},
       articles: [],
@@ -88,7 +90,7 @@ export default {
     ArticleModal
   },
   methods: {
-    openArticleEditModal(article) {
+    openArticleEditModal (article) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/article/${article.id}`
       this.$http
         .get(api)
@@ -104,13 +106,13 @@ export default {
       const articleModal = this.$refs.articleModal
       articleModal.showModal()
     },
-    openArticleModal() {
+    openArticleModal () {
       this.tempArticle = {}
       const openModal = this.$refs.articleModal
       this.isNewArticle = true
       openModal.showModal()
     },
-    updateArticle(article) {
+    updateArticle (article) {
       this.tempArticle = article
       console.log(this.tempArticle)
       let api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/article`
@@ -133,7 +135,7 @@ export default {
           }
         })
     },
-    getArticles() {
+    getArticles () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/articles`
       this.$http
@@ -153,7 +155,7 @@ export default {
           }
         })
     },
-    delArticle(article) {
+    delArticle (article) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/article/${article.id}`
       this.$http
         .delete(api)
@@ -169,7 +171,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.getArticles()
   }
 }

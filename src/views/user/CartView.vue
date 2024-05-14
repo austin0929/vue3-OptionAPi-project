@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -18,7 +18,6 @@
     </div>
   </div>
 
-  <!-- cart -->
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
@@ -92,7 +91,8 @@
             <button
               class="btn btn-primary"
               :disabled="carts.length === 0"
-              @click.prevent="toCheckout"
+              type="button"
+              @click="toCheckout"
             >
               結帳去
             </button>
@@ -102,7 +102,7 @@
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="d-flex justify-content-between">
           <h2 class="h4">購物車清單</h2>
-          <button class="btn btn-dark" type="button" @click.prevent="delAllCart">清空購物車</button>
+          <button class="btn btn-dark" type="button" @click="delAllCart">清空購物車</button>
         </div>
         <hr />
         <div class="d-flex justify-content-between mb-1" v-for="cart in carts" :key="cart.name">
@@ -132,9 +132,9 @@
             type="button"
             id="button-addon2"
             :disabled="carts.length === 0"
-            @click.prevent="addCoupon"
+            @click="addCoupon"
           >
-            送出
+            使用
           </button>
         </div>
       </div>
@@ -143,16 +143,16 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import cartStore from '@/stores/cartStore.js'
 import { mapActions, mapState } from 'pinia'
 import BannerSection from '@/components/layout/BannerSection.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
     BannerSection
   },
-  data() {
+  data () {
     return {
       isAddOrDelNum: false,
       cartData: {},
@@ -164,7 +164,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'delCartProduct', 'delAllCart', 'updateQty']),
-    addCoupon() {
+    addCoupon () {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/coupon`
       const couponCode = {
         code: this.coupon
@@ -183,11 +183,11 @@ export default {
           }
         })
     },
-    toCheckout() {
+    toCheckout () {
       this.$router.push('/checkout')
     }
   },
-  mounted() {
+  mounted () {
     this.getCart()
   }
 }

@@ -51,7 +51,9 @@
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-dark btn-sm" @click.prevent="openModal(order)">檢視</button>
+              <button class="btn btn-dark btn-sm" type="button" @click="openModal(order)">
+                檢視
+              </button>
             </div>
           </td>
         </tr>
@@ -62,13 +64,13 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import OrderModal from '@/components/admin/OrderModal.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
     OrderModal
   },
-  data() {
+  data () {
     return {
       orders: [],
       tempOrder: {},
@@ -76,7 +78,7 @@ export default {
     }
   },
   methods: {
-    getOrders() {
+    getOrders () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/orders`
       this.$http
@@ -95,12 +97,12 @@ export default {
           }
         })
     },
-    openModal(order) {
+    openModal (order) {
       this.tempOrder = { ...order }
       const openOrderModal = this.$refs.modal
       openOrderModal.showModal()
     },
-    delOrder(order) {
+    delOrder (order) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/order/${order.id}`
       this.$http
         .delete(api)
@@ -116,7 +118,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.getOrders()
   }
 }

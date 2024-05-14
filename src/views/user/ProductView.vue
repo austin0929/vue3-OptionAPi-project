@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -19,7 +19,6 @@
     </div>
   </div>
 
-  <!-- product -->
   <div class="container mt-7">
     <div class="row justify-content-center mt-6">
       <div class="col-md-10">
@@ -59,7 +58,7 @@
                       class="btn btn-light border-end rounded-0 py-2"
                       type="button"
                       id="button-addon1"
-                      @click.prevent="this.productQty > 1 ? this.productQty-- : 1"
+                      @click="this.productQty > 1 ? this.productQty-- : 1"
                     >
                       <i class="bi bi-dash"></i>
                     </button>
@@ -77,7 +76,7 @@
                       class="btn btn-light rounded-0 border-start py-2"
                       type="button"
                       id="button-addon2"
-                      @click.prevent="this.productQty++"
+                      @click="this.productQty++"
                     >
                       <i class="bi bi-plus"></i>
                     </button>
@@ -101,12 +100,12 @@
           </div>
         </div>
         <div class="border-primary border rounded p-3">
+          <p>商品配送工作時間：</p>
+          <p>※ 本商店皆以宅配方式寄出商品，於每次出貨時，寄發出貨通知信，還請多加留意。</p>
+          <p>※ 商品配送時間一律為3-7個工作天送達商品。配送時間以每筆訂單完成付款時間開始算起，</p>
           <p>
-            商品配送工作時間：<br />
-            ※ 本商店皆以宅配方式寄出商品，於每次出貨時，寄發出貨通知信，還請多加留意。<br />
-            ※ 商品配送時間一律為3-7個工作天送達商品。配送時間以每筆訂單完成付款時間開始算起，<br />
-            因商品數量有限，需要時間做調度作業，敬請見諒。<br />
-            ※ 若有特別需求，請於下訂單時備註說明，以利出貨作業。
+            因商品數量有限，需要時間做調度作業，敬請見諒。 ※
+            若有特別需求，請於下訂單時備註說明，以利出貨作業。
           </p>
         </div>
         <div class="row my-5">
@@ -154,7 +153,7 @@
                         <del>${{ product.origin_price }}</del>
                       </p>
                     </div>
-                    <button type="type" class="btn btn-primary" @click.prevent="addToCart(product)">
+                    <button type="type" class="btn btn-primary" @click="addToCart(product)">
                       <i class="bi bi-handbag"></i>
                     </button>
                   </div>
@@ -231,14 +230,13 @@ export default {
         })
     },
     getRandomProducts() {
-      let newRandomProducts = this.products.slice(0) // 建立一個資料的副本，以免影響原始資料，從索引0開始
-      let randomItems = []
+      const newRandomProducts = this.products.slice(0)
+      const randomItems = []
       let index
-      // 從原始資料中隨機選取元素，加入到randomItems陣列中
       for (let i = 0; i < 3; i++) {
         index = Math.floor(Math.random() * newRandomProducts.length)
         randomItems.push(newRandomProducts[index])
-        newRandomProducts.splice(index, 1) // 從newRandomProducts中移除已選取的元素
+        newRandomProducts.splice(index, 1)
       }
 
       this.randomProducts = randomItems
@@ -247,10 +245,9 @@ export default {
   watch: {
     products: {
       handler() {
-        // 當products數據發生變化時重新計算隨機四筆資料
         this.getRandomProducts()
       },
-      deep: true // 監聽對象的深度監聽，用於監聽對象內部數據的變化
+      deep: true
     }
   },
   computed: {

@@ -16,7 +16,7 @@
           <router-link to="/admin/article" class="list-group-item h3">文章</router-link>
         </li>
         <li>
-          <button type="button" class="list-group-item h3" @click.prevent="logout">登出</button>
+          <button type="button" class="list-group-item h3" @click="logout">登出</button>
         </li>
       </ul>
       <div class="col-8 offset-md-1">
@@ -30,13 +30,13 @@
 const { VITE_APP_URL } = import.meta.env
 
 export default {
-  data() {
+  data () {
     return {
       productsStatus: false
     }
   },
   methods: {
-    logout() {
+    logout () {
       const api = `${VITE_APP_URL}/logout`
       this.$http
         .post(api)
@@ -54,7 +54,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     const api = `${VITE_APP_URL}/api/user/check`
     const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)vuetoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
     this.$http.defaults.headers.common.Authorization = myCookie

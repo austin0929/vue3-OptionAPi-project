@@ -96,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click.prevent="updateArticle">確認</button>
+          <button type="button" class="btn btn-primary" @click="updateArticle">確認</button>
         </div>
       </div>
     </div>

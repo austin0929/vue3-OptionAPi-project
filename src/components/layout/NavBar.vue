@@ -72,7 +72,7 @@ export default {
   methods: {
     ...mapActions(bookmarkStore, ['getBookmark']),
     ...mapActions(cartStore, ['getCart']),
-    haveCartData() {
+    haveCartData () {
       if (this.carts.length === 0) {
         this.$swal('購物車無資料', '請先選購商品', 'error')
         return
@@ -80,7 +80,7 @@ export default {
       this.$router.push('/cart')
     }
   },
-  mounted() {
+  mounted () {
     this.getBookmark()
     this.getCart()
   }

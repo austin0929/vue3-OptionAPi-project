@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative py-8">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">

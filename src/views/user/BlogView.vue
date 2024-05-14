@@ -14,7 +14,7 @@
     </div>
   </VueLoading>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -30,7 +30,6 @@
     </div>
   </div>
 
-  <!-- blog -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-10 mb-5">
@@ -75,7 +74,7 @@ export default {
   components: {
     BannerSection
   },
-  data() {
+  data () {
     return {
       articleId: '',
       article: {},
@@ -83,7 +82,7 @@ export default {
     }
   },
   methods: {
-    getBlog() {
+    getBlog () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/article/${this.articleId}`
       this.$http
@@ -103,7 +102,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.articleId = this.$route.params.id
     this.getBlog()
   }

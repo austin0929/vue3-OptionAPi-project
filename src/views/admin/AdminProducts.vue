@@ -15,7 +15,7 @@
   </VueLoading>
   <div class="container">
     <div class="text-end my-4">
-      <button class="btn btn-lg btn-primary" @click.prevent="openModal(true)">新增產品</button>
+      <button class="btn btn-lg btn-primary" @click="openModal(true)">新增產品</button>
     </div>
     <table class="table table-striped productTable">
       <thead>
@@ -73,18 +73,18 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
-
 import Pagination from '@/components/PaginationComponent.vue'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
     Pagination,
     ProductModal
   },
-  data() {
+  data () {
     return {
       products: [],
       pagination: {},
@@ -94,7 +94,7 @@ export default {
     }
   },
   methods: {
-    getProducts(page = 1) {
+    getProducts (page = 1) {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/products?page=${page}`
       this.$http
@@ -114,7 +114,7 @@ export default {
           }
         })
     },
-    openModal(isNew, product) {
+    openModal (isNew, product) {
       if (isNew) {
         this.tempProduct = {}
       } else {
@@ -124,7 +124,7 @@ export default {
       const modal = this.$refs.modalComponent
       modal.showModal()
     },
-    updateProduct(product) {
+    updateProduct (product) {
       this.tempProduct = product
       let api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product`
       let httpMethods = 'post'
@@ -159,7 +159,7 @@ export default {
           }
         })
     },
-    delProduct(product) {
+    delProduct (product) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product/${product.id}`
       this.$http
         .delete(api)
@@ -175,7 +175,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.getProducts()
   }
 }

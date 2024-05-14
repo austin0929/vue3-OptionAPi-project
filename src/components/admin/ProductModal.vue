@@ -144,7 +144,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click.prevent="addProduct">確認</button>
+          <button type="button" class="btn btn-primary" @click="addProduct">確認</button>
         </div>
       </div>
     </div>
@@ -155,19 +155,19 @@
 import modalMixins from '@/mixins/modalMixins'
 export default {
   props: ['product'],
-  data() {
+  data () {
     return {
       modal: null,
       tempProduct: {}
     }
   },
   methods: {
-    addProduct() {
+    addProduct () {
       this.$emit('update-product', this.tempProduct)
     }
   },
   watch: {
-    product() {
+    product () {
       this.tempProduct = this.product
     }
   },

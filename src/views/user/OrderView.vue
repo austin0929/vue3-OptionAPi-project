@@ -14,7 +14,7 @@
     </div>
   </VueLoading>
   <div class="position-relative py-8 mb-6">
-    <BannerSection></BannerSection>
+    <BannerSection />
     <div class="container d-flex flex-column">
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
@@ -32,7 +32,6 @@
     </div>
   </div>
 
-  <!-- order -->
   <div class="container mb-5">
     <div>
       <h2 class="text-primary h6 mb-4" v-if="order.is_paid">
@@ -101,7 +100,7 @@
                 <button
                   class="btn btn-primary"
                   type="button"
-                  @click.prevent="payOrder"
+                  @click="payOrder"
                   v-if="!order.is_paid"
                 >
                   確認付款
@@ -116,14 +115,14 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import BannerSection from '@/components/layout/BannerSection.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
     BannerSection
   },
-  data() {
+  data () {
     return {
       order: {},
       orderId: '',
@@ -131,7 +130,7 @@ export default {
     }
   },
   methods: {
-    getOrder() {
+    getOrder () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order/${this.orderId}`
       this.$http
@@ -150,7 +149,7 @@ export default {
           }
         })
     },
-    payOrder() {
+    payOrder () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/pay/${this.orderId}`
       this.$http
@@ -169,7 +168,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.orderId = this.$route.params.id
     this.getOrder()
   }

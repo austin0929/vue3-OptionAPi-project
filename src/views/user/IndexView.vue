@@ -1,5 +1,4 @@
 <template>
-  <!-- banner -->
   <VueLoading :active="isLoading"
     ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
       <div class="ldio-x2uulkbinbj">
@@ -31,7 +30,6 @@
     </div>
   </div>
 
-  <!-- service -->
   <div class="container mt-4 mb-5">
     <div class="row">
       <div class="col-md-3 col-6">
@@ -66,7 +64,6 @@
     <hr />
   </div>
 
-  <!-- introduce -->
   <div class="container mb-6">
     <h2 class="text-center fw-bold mb-4">用心烹飪每項食材</h2>
     <div class="row">
@@ -108,7 +105,6 @@
     </div>
   </div>
 
-  <!-- customer -->
   <div>
     <swiper
       :modules="modules"
@@ -189,7 +185,6 @@
     </swiper>
   </div>
 
-  <!-- menu -->
   <div class="container mb-5">
     <h2 class="text-center fw-bold mb-4">我們的菜單</h2>
     <div class="row">
@@ -217,7 +212,7 @@
                   <del>${{ product.origin_price }}</del>
                 </p>
               </div>
-              <button type="type" class="btn btn-primary" @click.prevent="addToCart(product)">
+              <button type="type" class="btn btn-primary" @click="addToCart(product)">
                 <i class="bi bi-handbag"></i>
               </button>
             </div>
@@ -243,7 +238,7 @@ export default {
     Swiper,
     SwiperSlide
   },
-  setup() {
+  setup () {
     const onSwiper = () => {}
     const onSlideChange = () => {}
     return {
@@ -252,7 +247,7 @@ export default {
       modules: [A11y, Autoplay]
     }
   },
-  data() {
+  data () {
     return {
       products: [],
       randomProducts: [],
@@ -262,7 +257,7 @@ export default {
   methods: {
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(bookmarkStore, ['getBookmark', 'addBookmark']),
-    getProducts() {
+    getProducts () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products`
       this.$http
@@ -281,15 +276,14 @@ export default {
           }
         })
     },
-    getRandomProducts() {
-      let newRandomProducts = this.products.slice(0) // 建立一個資料的副本，以免影響原始資料，從索引0開始
-      let randomItems = []
+    getRandomProducts () {
+      const newRandomProducts = this.products.slice(0)
+      const randomItems = []
       let index
-      // 從原始資料中隨機選取元素，加入到randomItems陣列中
       for (let i = 0; i < 4; i++) {
         index = Math.floor(Math.random() * newRandomProducts.length)
         randomItems.push(newRandomProducts[index])
-        newRandomProducts.splice(index, 1) // 從newRandomProducts中移除已選取的元素
+        newRandomProducts.splice(index, 1)
       }
 
       this.randomProducts = randomItems
@@ -297,14 +291,13 @@ export default {
   },
   watch: {
     products: {
-      handler() {
-        // 當products數據發生變化時重新計算隨機四筆資料
+      handler () {
         this.getRandomProducts()
       },
-      deep: true // 監聽對象的深度監聽，用於監聽對象內部數據的變化
+      deep: true
     }
   },
-  mounted() {
+  mounted () {
     this.getProducts()
     this.getBookmark()
   }

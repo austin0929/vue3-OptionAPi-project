@@ -155,19 +155,19 @@
 import modalMixins from '@/mixins/modalMixins'
 export default {
   props: ['product'],
-  data() {
+  data () {
     return {
       modal: null,
       tempProduct: {}
     }
   },
   methods: {
-    addProduct() {
+    addProduct () {
       this.$emit('update-product', this.tempProduct)
     }
   },
   watch: {
-    product() {
+    product () {
       this.tempProduct = this.product
     }
   },

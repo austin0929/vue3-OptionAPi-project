@@ -1,23 +1,8 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
+  <VueLoading :active="isLoading"></VueLoading>
   <div class="container">
-    <div class="text-end my-4">
-      <button class="btn btn-lg btn-primary" type="button" @click="openArticleModal">
-        新增文章
-      </button>
+    <div class="text-end my-md-5 my-3 custom-btn-primary">
+      <button class="btn btn-lg" type="button" @click="openArticleModal">新增文章</button>
     </div>
     <table class="table table-striped productTable">
       <thead>
@@ -75,6 +60,7 @@
 
 <script>
 import ArticleModal from '@/components/admin/ArticleModal.vue'
+import VueLoading from '@/components/VueLoading.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
@@ -87,7 +73,8 @@ export default {
     }
   },
   components: {
-    ArticleModal
+    ArticleModal,
+    VueLoading
   },
   methods: {
     openArticleEditModal (article) {

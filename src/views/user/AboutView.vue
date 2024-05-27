@@ -1,23 +1,25 @@
 <template>
-  <div class="position-relative py-8">
-    <BannerSection />
-    <div class="container d-flex flex-column">
-      <div class="row justify-content-center my-auto">
-        <div class="col-md-4 text-center">
-          <h2 class="fw-bold mb-3 text-light h1">關於我們</h2>
-          <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-            <ol class="breadcrumb d-flex justify-content-center">
-              <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
-              <li class="breadcrumb-item text-light" aria-current="page">關於我們</li>
-            </ol>
-          </nav>
+  <VueLoading :active="isLoading"></VueLoading>
+  <div>
+    <div class="layoutBanner mb-md-5 mb-3">
+      <div class="container">
+        <div class="row justify-content-center my-auto">
+          <div class="col-md-4 text-center layout-Banner-Text">
+            <h2 class="fw-bold mb-3 text-light h1">關於我們</h2>
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+              <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item text-light" aria-current="page">關於我們</li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="container aboutLineHeight">
-    <h2 class="fw-bold text-center mt-md-6 mt-3 mb-4">關於我們</h2>
+    <h2 class="fw-bold text-center mb-md-5 mb-3">關於我們</h2>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="mb-5">
@@ -47,7 +49,7 @@
             以美食為媒介，傳達愛和溫暖，為顧客營造一個美好的用餐體驗，並與社區共同成長和繁榮。
           </p>
         </div>
-        <div class="mb-7">
+        <div class="mb-md-5 mb-3">
           <h3 class="fw-bolder h4">品質把關</h3>
           <p>
             我們餐廳對品質的把關是我們經營的核 心價值之一。從食材的選擇到菜品的呈現，我們始終
@@ -67,11 +69,21 @@
 </template>
 
 <script>
-import BannerSection from '@/components/layout/BannerSection.vue'
-
+import VueLoading from '@/components/VueLoading.vue'
 export default {
   components: {
-    BannerSection
+    VueLoading
+  },
+  data () {
+    return {
+      isLoading: false
+    }
+  },
+  mounted () {
+    this.isLoading = true
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
   }
 }
 </script>

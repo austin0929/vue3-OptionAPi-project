@@ -48,13 +48,9 @@
                 </div>
                 <div class="col-6 mb-3">
                   <label for="tag" class="form-label">標籤</label>
-                  <ul class="d-flex p-0">
+                  <ul class="d-flex p-0 custom-btn-primary">
                     <li v-for="item in tags" :key="item">
-                      <button
-                        class="btn btn-primary me-2"
-                        type="button"
-                        @click.prevent="addTag(item)"
-                      >
+                      <button class="btn me-2" type="button" @click.prevent="addTag(item)">
                         {{ item }}
                       </button>
                     </li>
@@ -110,7 +106,7 @@ export default {
   props: {
     article: Object
   },
-  data() {
+  data () {
     return {
       modal: null,
       tempArticle: {
@@ -120,23 +116,23 @@ export default {
     }
   },
   methods: {
-    updateArticle() {
+    updateArticle () {
       const getTime = Math.floor(Date.now() / 1000)
       this.tempArticle.create_at = getTime
       this.$emit('update-article', this.tempArticle)
     },
-    addTag(item) {
+    addTag (item) {
       this.tempArticle.tag = [item]
     },
-    showModal() {
+    showModal () {
       this.modal.show()
     },
-    hideModal() {
+    hideModal () {
       this.modal.hide()
     }
   },
   watch: {
-    article() {
+    article () {
       this.tempArticle = {
         ...this.article,
         isPublic: this.article.isPublic || false

@@ -1,22 +1,7 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
-  <div class="text-end my-4">
-    <button type="button" class="btn btn-primary btn-lg" @click="openCouponModal(true)">
-      新增優惠券
-    </button>
+  <VueLoading :active="isLoading"></VueLoading>
+  <div class="text-end my-md-5 my-3 custom-btn-primary">
+    <button type="button" class="btn btn-lg" @click="openCouponModal(true)">新增優惠券</button>
   </div>
   <table class="table mt-4 table-striped">
     <thead>
@@ -48,7 +33,7 @@
         <td>
           <div class="btn-group">
             <button
-              class="btn btn-outline-primary btn-sm"
+              class="btn btn-outline-dark btn-sm"
               @click.prevent="openCouponModal(false, coupon)"
             >
               編輯
@@ -65,10 +50,12 @@
 import CouponModal from '@/components/admin/CouponModal.vue'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+import VueLoading from '@/components/VueLoading.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
-    CouponModal
+    CouponModal,
+    VueLoading
   },
   data () {
     return {

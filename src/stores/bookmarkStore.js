@@ -8,7 +8,7 @@ export default defineStore('bookmarkStore', {
     bookmarkDate: ''
   }),
   actions: {
-    addBookmark(product) {
+    addBookmark (product) {
       const bookMarks = JSON.parse(localStorage.getItem('bookMarks')) || []
       bookMarks.push(product)
       localStorage.setItem('bookMarks', JSON.stringify(bookMarks))
@@ -21,7 +21,7 @@ export default defineStore('bookmarkStore', {
       })
       this.bookmark = bookMarks
     },
-    getBookmark() {
+    getBookmark () {
       this.bookmark = JSON.parse(localStorage.getItem('bookMarks')) || []
       const currentDate = new Date()
       const year = currentDate.getFullYear()
@@ -30,7 +30,7 @@ export default defineStore('bookmarkStore', {
 
       this.bookmarkDate = `${year}/${month}/${day}`
     },
-    delBookmark(mark, index) {
+    delBookmark (mark, index) {
       this.bookmark.findIndex((item) => item.id === mark.id)
       if (index !== -1) {
         this.bookmark.splice(index, 1)

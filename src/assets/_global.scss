@@ -1,12 +1,12 @@
-body {
-  font-family: "Noto Sans TC", sans-serif !important;
-  font-optical-sizing: auto !important;
-  font-weight: 400 !important;
-  font-style: normal !important;
+.NotoSans {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-a {
-  text-decoration: none !important;
+.custom-no-decoration a {
+  text-decoration: none;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -20,17 +20,51 @@ ol {
   list-style: none;
 }
 
-.btn-primary {
+
+.custom-btn-primary a {
+  background: #CA0808;
+  color: white;
+}
+
+.custom-btn-primary a {
   &:hover {
-    background: white !important;
-    color: #CA0808 !important;
+    background: white;
+    color: #CA0808;
+    border: 1px solid #ca0808
   }
 }
 
-.btn-dark {
+.custom-btn-primary button {
+  background: #CA0808;
+  color: white;
+}
+
+.custom-btn-primary button {
   &:hover {
-    background: white !important;
-    color: black !important;
+    background: white;
+    color: #CA0808;
+    border: 1px solid #ca0808
+  }
+}
+
+.custom-btn-dark button {
+  background: black;
+  color: white
+}
+
+.custom-btn-dark button {
+  &:hover {
+    background: white;
+    color: black;
+    border: 1px solid black
+  }
+}
+
+.custom-btn-dark a {
+  &:hover {
+    background: white;
+    color: black;
+    border: 1px solid black
   }
 }
 
@@ -58,8 +92,30 @@ ol {
 }
 
 .navBarHover:hover {
-  color: #ca0808 !important;
+  color: #ca0808;
 }
+
+.icon-Hover span {
+  background-color: #ca0808;
+}
+
+.icon-Hover a {
+  color: white
+}
+
+.custom-nav-link {
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.icon-Hover a {
+  &:hover {
+    color: #ca0808;
+  }
+}
+
 
 .scrollTop:hover {
   transform: scale(1.5);
@@ -68,4 +124,11 @@ ol {
   @media (max-width: 768px) {
     transform: scale(1.2);
   }
+}
+
+.layout-Banner-Text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 1rem;
 }

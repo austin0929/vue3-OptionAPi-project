@@ -1,26 +1,36 @@
 <template>
-  <div class="position-relative py-8 mb-6">
-    <BannerSection />
-    <div class="container d-flex flex-column">
-      <div class="row justify-content-center my-auto">
-        <div class="col-md-4 text-center">
-          <h2 class="fw-bold mb-3 text-light h1">{{ product.title }}</h2>
-          <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-            <ol class="breadcrumb d-flex justify-content-center">
-              <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
-              <li class="breadcrumb-item text-light" aria-current="page">
-                <a href="#" class="aboutHover">產品列表</a>
-              </li>
-              <li class="breadcrumb-item text-light" aria-current="page">{{ product.title }}</li>
-            </ol>
-          </nav>
+  <VueLoading :active="isLoading"></VueLoading>
+  <div>
+    <div class="layoutBanner mb-md-5 mb-3">
+      <div class="container">
+        <div class="row justify-content-center my-auto">
+          <div class="col-md-4 text-center layout-Banner-Text">
+            <h2 class="fw-bold mb-3 text-light h1">{{ product.title }}</h2>
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+              <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item">
+                  <router-link to="/"
+                    ><a href="#" class="aboutHover">首頁</a></router-link
+                  >
+                </li>
+                <li class="breadcrumb-item text-light" aria-current="page">
+                  <router-link to="/products"
+                    ><a href="#" class="aboutHover">產品列表</a></router-link
+                  >
+                </li>
+                <li class="breadcrumb-item text-light" aria-current="page">
+                  {{ product.title }}
+                </li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container mt-7">
-    <div class="row justify-content-center mt-6">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
       <div class="col-md-10">
         <div class="row">
           <div class="col-md-7">
@@ -49,7 +59,9 @@
             <p class="mb-0 text-muted text-end">
               <del>NT$ {{ product.origin_price }}</del>
             </p>
-            <p class="h4 fw-bold text-end text-primary">NT$ {{ product.price }}</p>
+            <p class="h4 fw-bold text-end text-primary">
+              NT$ {{ product.price }}
+            </p>
             <div class="row align-items-center mb-6">
               <div class="col-5">
                 <div class="input-group my-3 bg-light border">
@@ -65,11 +77,12 @@
                   </div>
                   <input
                     type="number"
-                    class="form-control border-0 text-center my-auto shadow-none bg-light"
+                    class="form-control border-0 text-center my-auto bg-light"
                     aria-label="Example text with button addon"
                     aria-describedby="button-addon1"
                     min="1"
                     v-model="productQty"
+                    readonly
                   />
                   <div class="input-group-append">
                     <button
@@ -83,26 +96,37 @@
                   </div>
                 </div>
               </div>
-              <div class="col-5">
+              <div class="col-5 custom-btn-primary">
                 <a
                   href="#"
-                  class="text-nowrap btn w-100 py-2 btn-primary"
+                  class="text-nowrap btn w-100 py-2"
                   @click.prevent="addToCart(product, productQty)"
                   >加入購物車</a
                 >
               </div>
               <div class="col-2">
-                <a href="#" class="btn w-100 py-2 btn-info" @click.prevent="addBookmark(product)"
-                  ><i class="bi bi-heart"></i
-                ></a>
+                <div class="custom-btn-info">
+                  <a
+                    href="#"
+                    class="btn w-100 py-2"
+                    @click.prevent="addBookmark(product)"
+                    ><i class="bi bi-heart"></i
+                  ></a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="border-primary border rounded p-3">
           <p>商品配送工作時間：</p>
-          <p>※ 本商店皆以宅配方式寄出商品，於每次出貨時，寄發出貨通知信，還請多加留意。</p>
-          <p>※ 商品配送時間一律為3-7個工作天送達商品。配送時間以每筆訂單完成付款時間開始算起，</p>
+          <p>
+            ※
+            本商店皆以宅配方式寄出商品，於每次出貨時，寄發出貨通知信，還請多加留意。
+          </p>
+          <p>
+            ※
+            商品配送時間一律為3-7個工作天送達商品。配送時間以每筆訂單完成付款時間開始算起，
+          </p>
           <p>
             因商品數量有限，需要時間做調度作業，敬請見諒。 ※
             若有特別需求，請於下訂單時備註說明，以利出貨作業。
@@ -128,7 +152,11 @@
         <div>
           <h2 class="text-center mb-3 mt-5">相關產品</h2>
           <div class="row mb-6">
-            <div class="col-lg-4 col-md-6" v-for="product in randomProducts" :key="product.id">
+            <div
+              class="col-lg-4 col-md-6"
+              v-for="product in randomProducts"
+              :key="product.id"
+            >
               <div class="card border p-2 mb-4 position-relative">
                 <a href="#" @click.prevent>
                   <img
@@ -146,16 +174,26 @@
                   <p class="card-text text-muted mb-2 text-truncate">
                     {{ product.description }}
                   </p>
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
-                      <span class="text-primary fw-bold me-2">$ {{ product.origin_price }}</span>
+                      <span class="text-primary fw-bold me-2"
+                        >$ {{ product.origin_price }}</span
+                      >
                       <p class="mb-0 text-muted text-end d-inline-block">
                         <del>${{ product.origin_price }}</del>
                       </p>
                     </div>
-                    <button type="type" class="btn btn-primary" @click="addToCart(product)">
-                      <i class="bi bi-handbag"></i>
-                    </button>
+                    <div class="custom-btn-primary">
+                      <button
+                        type="type"
+                        class="btn"
+                        @click="addToCart(product)"
+                      >
+                        <i class="bi bi-handbag"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -171,15 +209,14 @@
 import cartStore from '@/stores/cartStore.js'
 import { mapActions, mapState } from 'pinia'
 import bookmarkStore from '@/stores/bookmarkStore'
-import BannerSection from '@/components/layout/BannerSection.vue'
-
+import VueLoading from '@/components/VueLoading.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
-    BannerSection
+    VueLoading
   },
-  data() {
+  data () {
     return {
       product: {},
       products: [],
@@ -187,17 +224,18 @@ export default {
       productImages: [],
       productImg: '',
       productId: '',
-      productQty: 1
+      productQty: 1,
+      isLoading: false
     }
   },
   methods: {
     ...mapActions(cartStore, ['addToCart', 'updateQty']),
     ...mapActions(bookmarkStore, ['getBookmark', 'addBookmark']),
-    getNewProductId(id) {
+    getNewProductId (id) {
       this.productId = id
       this.getProduct()
     },
-    getProducts() {
+    getProducts () {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products`
       this.$http
         .get(api)
@@ -212,12 +250,16 @@ export default {
           }
         })
     },
-    getProduct() {
+    getProduct () {
+      this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${this.productId}`
       this.$http
         .get(api)
         .then((res) => {
           if (res.data.success) {
+            setTimeout(() => {
+              this.isLoading = false
+            }, 1000)
             this.product = res.data.product
             this.productImg = res.data.product.imageUrl
             this.productImages = res.data.product.imagesUrl
@@ -229,7 +271,7 @@ export default {
           }
         })
     },
-    getRandomProducts() {
+    getRandomProducts () {
       const newRandomProducts = this.products.slice(0)
       const randomItems = []
       let index
@@ -244,7 +286,7 @@ export default {
   },
   watch: {
     products: {
-      handler() {
+      handler () {
         this.getRandomProducts()
       },
       deep: true
@@ -253,7 +295,7 @@ export default {
   computed: {
     ...mapState(cartStore, ['carts'])
   },
-  mounted() {
+  mounted () {
     this.productId = this.$route.params.id
     this.getProduct()
     this.getProducts()

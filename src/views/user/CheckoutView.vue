@@ -1,41 +1,39 @@
   <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
-  <div class="position-relative py-8 mb-6">
-    <BannerSection />
-    <div class="container d-flex flex-column">
-      <div class="row justify-content-center my-auto">
-        <div class="col-md-4 text-center">
-          <h2 class="fw-bold mb-3 text-light h1">訂單</h2>
-          <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-            <ol class="breadcrumb d-flex justify-content-center">
-              <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
-              <li class="breadcrumb-item text-light" aria-current="page">
-                <a href="#" class="aboutHover">訂單</a>
-              </li>
-            </ol>
-          </nav>
+  <VueLoading :active="isLoading"></VueLoading>
+  <div>
+    <div class="layoutBanner mb-md-5 mb-3">
+      <div class="container">
+        <div class="row justify-content-center my-auto">
+          <div class="col-md-4 text-center layout-Banner-Text">
+            <h2 class="fw-bold mb-3 text-light h1">訂單資訊</h2>
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+              <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item text-light" aria-current="page">訂單資訊</li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
+  <div class="container">
+    <div class="row justify-content-center mb-md-5 mb-3">
+      <div class="col-md-3 col-4">
+        <div class="text-light text-center py-4 stepperActive">確認訂單</div>
+      </div>
+      <div class="col-md-3 col-4">
+        <div class="text-light text-center py-4 bg-secondary">建立訂單</div>
+      </div>
+      <div class="col-md-3 col-4">
+        <div class="text-light text-center py-4 bg-secondary">完成訂單</div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="border p-4 mb-5">
+        <div class="border p-4 mb-md-5 mb-3">
           <h2 class="h4 mb-3">訂購人資料</h2>
           <VForm ref="form" v-slot="{ errors }" @submit="sendOrder">
             <div class="mb-3">
@@ -106,8 +104,8 @@
                 v-model="form.message"
               ></VField>
             </div>
-            <div class="text-end">
-              <button type="submit" class="btn btn-primary border w-100">送出訂單</button>
+            <div class="custom-btn-primary">
+              <button type="submit" class="btn border w-100">送出訂單</button>
             </div>
           </VForm>
         </div>
@@ -144,14 +142,14 @@
 </template>
 
 <script>
-import BannerSection from '@/components/layout/BannerSection.vue'
+import VueLoading from '@/components/VueLoading.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
-    BannerSection
+    VueLoading
   },
-  data() {
+  data () {
     return {
       carts: [],
       totalPrice: {},
@@ -168,7 +166,7 @@ export default {
     }
   },
   methods: {
-    getCart() {
+    getCart () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`
       this.$http
@@ -191,7 +189,7 @@ export default {
           }
         })
     },
-    sendOrder() {
+    sendOrder () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order`
       this.$http
@@ -212,12 +210,12 @@ export default {
           }
         })
     },
-    isPhone(value) {
+    isPhone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/
       return phoneNumber.test(value) ? true : '需要正確的電話號碼'
     }
   },
-  mounted() {
+  mounted () {
     this.getCart()
   }
 }

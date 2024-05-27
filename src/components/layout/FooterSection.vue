@@ -1,6 +1,6 @@
 <template>
   <!-- footer -->
-  <div class="bg-dark py-5 mt-5">
+  <div class="bg-dark py-5 mt-md-5 mt-3">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
         <router-link class="text-white h5 fw-bold" to="/">
@@ -39,7 +39,7 @@
 <script>
 export default {
   methods: {
-    scrollTop() {
+    scrollTop () {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'

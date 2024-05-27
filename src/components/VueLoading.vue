@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"
+  <VueLoading
     ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
       <div class="ldio-x2uulkbinbj">
         <div><div></div></div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isLoading: false
     }

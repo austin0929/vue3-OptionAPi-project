@@ -22,7 +22,7 @@
             v-model="user.password"
           />
           <div class="text-center mt-3">
-            <router-link class="btn btn btn-outline-dark" to="/">回賣場</router-link>
+            <router-link class="btn btn-dark" to="/">回賣場</router-link>
             <button class="btn btn-primary mx-3" type="submit">登入</button>
           </div>
         </form>

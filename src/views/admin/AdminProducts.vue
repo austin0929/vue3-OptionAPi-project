@@ -1,21 +1,8 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
+  <VueLoading :active="isLoading"></VueLoading>
   <div class="container">
-    <div class="text-end my-4">
-      <button class="btn btn-lg btn-primary" @click="openModal(true)">新增產品</button>
+    <div class="text-end my-md-5 my-3 custom-btn-primary">
+      <button class="btn btn-lg" @click="openModal(true)">新增產品</button>
     </div>
     <table class="table table-striped productTable">
       <thead>
@@ -77,12 +64,14 @@ import Pagination from '@/components/PaginationComponent.vue'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+import VueLoading from '@/components/VueLoading.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
     Pagination,
-    ProductModal
+    ProductModal,
+    VueLoading
   },
   data () {
     return {

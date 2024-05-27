@@ -1,36 +1,26 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
-  <div class="position-relative mt-5">
-    <div class="indexBanner"></div>
-    <div class="container d-flex flex-column" style="min-height: 100vh">
-      <div class="row my-auto">
-        <div class="col-md-4">
-          <h2 class="fw-bold mb-3 text-light h1 mb-5">堅持品質的美味 用心烹飪給每一位顧客</h2>
-          <p class="mb-3 text-light">
-            特級初榨橄欖油、大蒜、洋蔥、蘑菇、綠橄欖、黑橄欖、新鮮番茄。
-          </p>
-          <router-link to="/products" class="btn btn-primary rounded mt-3 btn-lg"
-            >立刻選購</router-link
-          >
+  <VueLoading :active="isLoading"></VueLoading>
+  <div class="mb-md-5 mb-3">
+    <div class="indexBanner">
+      <div class="container">
+        <div>
+          <div>
+            <h2 class="fw-bold mb-3 text-light h1 mb-5">
+              堅持品質的美味用心<br />烹飪給每一位顧客
+            </h2>
+            <p class="mb-3 text-light">
+              特級初榨橄欖油、大蒜、洋蔥、蘑菇、<br />綠橄欖、黑橄欖、新鮮番茄。
+            </p>
+            <router-link to="/products" class="custom-btn-primary"
+              ><a href="#" class="btn rounded mt-3 btn-lg">立刻選購</a></router-link
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container mt-4 mb-5">
+  <div class="container my-md-5 my-3">
     <div class="row">
       <div class="col-md-3 col-6">
         <div class="text-center">
@@ -64,7 +54,7 @@
     <hr />
   </div>
 
-  <div class="container mb-6">
+  <div class="container mb-md-5 mb-3">
     <h2 class="text-center fw-bold mb-4">用心烹飪每項食材</h2>
     <div class="row">
       <div class="col-md-6">
@@ -116,21 +106,21 @@
       @slideChange="onSlideChange"
     >
       <swiper-slide>
-        <div class="position-relative py-7">
+        <div class="position-relative py-7 mb-md-5 mb-3">
           <div class="swiper-img-one"></div>
           <div class="container d-flex flex-column">
             <div class="row justify-content-center my-auto">
               <div class="col-md-4 text-center">
                 <img
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="customer-img"
+                  src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="customer-img2"
                   class="mb-3 object-fit-cover swiper-customer-img-size"
                 />
                 <h2 class="fw-bold mb-3 text-light">賈伯斯</h2>
                 <p class="mb-3 text-light">
-                  這家餐廳的菜色精緻多樣，口味新鮮獨特。每一<br />
-                  道菜都令人驚艷，特別是他們的招牌菜。服務周到<br />
-                  ，氣氛舒適，是一個非常值得推薦的用餐地點。
+                  這家餐廳簡直是天堂！他們的牛排烤得恰到好處，
+                  口感鮮嫩多汁，每一口都是極致享受。服務態度親切
+                  ，環境雅致，讓用餐體驗更上一層樓。絕對是值得一試的高級餐廳！
                 </p>
               </div>
             </div>
@@ -138,7 +128,7 @@
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="position-relative py-7 mb-6">
+        <div class="position-relative py-7 mb-md-5 mb-3">
           <div class="swiper-img-three"></div>
           <div class="container d-flex flex-column">
             <div class="row justify-content-center my-auto">
@@ -160,7 +150,7 @@
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="position-relative py-7 mb-6">
+        <div class="position-relative py-7 mb-md-5 mb-3">
           <div class="swiper-img-two"></div>
           <div class="container d-flex flex-column">
             <div class="row justify-content-center my-auto">
@@ -185,7 +175,7 @@
     </swiper>
   </div>
 
-  <div class="container mb-5">
+  <div class="container mb-md-5 mb-3">
     <h2 class="text-center fw-bold mb-4">我們的菜單</h2>
     <div class="row">
       <div class="col-md-3" v-for="product in randomProducts" :key="product.id">
@@ -212,9 +202,11 @@
                   <del>${{ product.origin_price }}</del>
                 </p>
               </div>
-              <button type="type" class="btn btn-primary" @click="addToCart(product)">
-                <i class="bi bi-handbag"></i>
-              </button>
+              <div class="custom-btn-primary">
+                <button type="type" class="btn" @click="addToCart(product)">
+                  <i class="bi bi-handbag"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -227,37 +219,32 @@
 import cartStore from '@/stores/cartStore.js'
 import { mapActions } from 'pinia'
 import bookmarkStore from '@/stores/bookmarkStore'
-
 import { A11y, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
+import VueLoading from '@/components/VueLoading.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    VueLoading
   },
-  setup() {
-    const onSwiper = () => {}
-    const onSlideChange = () => {}
-    return {
-      onSwiper,
-      onSlideChange,
-      modules: [A11y, Autoplay]
-    }
-  },
-  data() {
+  data () {
     return {
       products: [],
       randomProducts: [],
-      isLoading: false
+      isLoading: false,
+      onSwiper: {},
+      onSlideChange: {},
+      modules: [A11y, Autoplay]
     }
   },
   methods: {
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(bookmarkStore, ['getBookmark', 'addBookmark']),
-    getProducts() {
+    getProducts () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products`
       this.$http
@@ -276,7 +263,7 @@ export default {
           }
         })
     },
-    getRandomProducts() {
+    getRandomProducts () {
       const newRandomProducts = this.products.slice(0)
       const randomItems = []
       let index
@@ -291,13 +278,13 @@ export default {
   },
   watch: {
     products: {
-      handler() {
+      handler () {
         this.getRandomProducts()
       },
       deep: true
     }
   },
-  mounted() {
+  mounted () {
     this.getProducts()
     this.getBookmark()
   }

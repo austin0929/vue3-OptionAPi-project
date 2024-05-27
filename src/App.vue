@@ -1,3 +1,5 @@
 <template>
-  <RouterView />
+  <div class="NotoSans custom-no-decoration">
+    <RouterView />
+  </div>
 </template>

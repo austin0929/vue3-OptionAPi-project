@@ -1,19 +1,6 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
-  <table class="table table-striped mt-4">
+  <VueLoading :active="isLoading"></VueLoading>
+  <table class="table table-striped my-md-5 my-3">
     <thead>
       <tr>
         <th></th>
@@ -50,8 +37,8 @@
             </div>
           </td>
           <td>
-            <div class="btn-group">
-              <button class="btn btn-dark btn-sm" @click.prevent="openModal(order)">檢視</button>
+            <div class="btn-group custom-btn-dark">
+              <button class="btn btn-sm" type="button" @click="openModal(order)">檢視</button>
             </div>
           </td>
         </tr>
@@ -62,21 +49,23 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import OrderModal from '@/components/admin/OrderModal.vue'
+import VueLoading from '@/components/VueLoading.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
-    OrderModal
+    OrderModal,
+    VueLoading
   },
-  data() {
+  data () {
     return {
       orders: [],
       tempOrder: {},
-      isLoading: ''
+      isLoading: false
     }
   },
   methods: {
-    getOrders() {
+    getOrders () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/orders`
       this.$http
@@ -95,12 +84,12 @@ export default {
           }
         })
     },
-    openModal(order) {
+    openModal (order) {
       this.tempOrder = { ...order }
       const openOrderModal = this.$refs.modal
       openOrderModal.showModal()
     },
-    delOrder(order) {
+    delOrder (order) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/order/${order.id}`
       this.$http
         .delete(api)
@@ -116,7 +105,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.getOrders()
   }
 }

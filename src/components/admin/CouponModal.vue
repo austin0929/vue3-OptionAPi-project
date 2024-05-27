@@ -70,9 +70,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click.prevent="updateCoupon">
-            更新優惠券
-          </button>
+          <button type="button" class="btn btn-primary" @click="updateCoupon">更新優惠券</button>
         </div>
       </div>
     </div>
@@ -83,7 +81,7 @@
 import modalMixins from '@/mixins/modalMixins'
 export default {
   props: ['coupon'],
-  data() {
+  data () {
     return {
       modal: null,
       tempCoupon: {},
@@ -91,18 +89,18 @@ export default {
     }
   },
   methods: {
-    updateCoupon() {
+    updateCoupon () {
       this.$emit('update-coupon', this.tempCoupon)
       this.hideModal()
     }
   },
   watch: {
-    coupon() {
+    coupon () {
       this.tempCoupon = this.coupon
       const couponDate = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
       ;[this.due_date] = couponDate
     },
-    due_date() {
+    due_date () {
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
     }
   },

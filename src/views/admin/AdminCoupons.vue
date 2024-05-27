@@ -1,22 +1,7 @@
 <template>
-  <VueLoading :active="isLoading"
-    ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
-      <div class="ldio-x2uulkbinbj">
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-      </div>
-    </div>
-  </VueLoading>
-  <div class="text-end my-4">
-    <button type="button" class="btn btn-primary btn-lg" @click.prevent="openCouponModal(true)">
-      新增優惠券
-    </button>
+  <VueLoading :active="isLoading"></VueLoading>
+  <div class="text-end my-md-5 my-3 custom-btn-primary">
+    <button type="button" class="btn btn-lg" @click="openCouponModal(true)">新增優惠券</button>
   </div>
   <table class="table mt-4 table-striped">
     <thead>
@@ -48,7 +33,7 @@
         <td>
           <div class="btn-group">
             <button
-              class="btn btn-outline-primary btn-sm"
+              class="btn btn-outline-dark btn-sm"
               @click.prevent="openCouponModal(false, coupon)"
             >
               編輯
@@ -62,15 +47,17 @@
 </template>
 
 <script>
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 import CouponModal from '@/components/admin/CouponModal.vue'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+import VueLoading from '@/components/VueLoading.vue'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   components: {
-    CouponModal
+    CouponModal,
+    VueLoading
   },
-  data() {
+  data () {
     return {
       tempCoupon: {},
       coupons: [],
@@ -79,7 +66,7 @@ export default {
     }
   },
   methods: {
-    getCoupons() {
+    getCoupons () {
       this.isLoading = true
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/coupons`
       this.$http
@@ -98,7 +85,7 @@ export default {
           }
         })
     },
-    openCouponModal(isNewCoupon, coupon) {
+    openCouponModal (isNewCoupon, coupon) {
       if (isNewCoupon) {
         this.tempCoupon = {
           due_date: new Date().getTime() / 1000
@@ -110,7 +97,7 @@ export default {
       const openModal = this.$refs.couponModal
       openModal.showModal()
     },
-    updateCoupon(coupon) {
+    updateCoupon (coupon) {
       this.tempCoupon = { ...coupon }
       let api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/coupon`
       let httpMethods = 'post'
@@ -143,7 +130,7 @@ export default {
           }
         })
     },
-    delCoupon(coupon) {
+    delCoupon (coupon) {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/coupon/${coupon.id}`
       this.$http
         .delete(api)
@@ -159,7 +146,7 @@ export default {
         })
     }
   },
-  mounted() {
+  mounted () {
     this.getCoupons()
   }
 }

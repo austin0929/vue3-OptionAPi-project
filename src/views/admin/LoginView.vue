@@ -22,7 +22,7 @@
             v-model="user.password"
           />
           <div class="text-center mt-3">
-            <router-link class="btn btn btn-outline-dark" to="/">回賣場</router-link>
+            <router-link class="btn btn-dark" to="/">回賣場</router-link>
             <button class="btn btn-primary mx-3" type="submit">登入</button>
           </div>
         </form>
@@ -35,7 +35,7 @@
 const { VITE_APP_URL } = import.meta.env
 
 export default {
-  data() {
+  data () {
     return {
       user: {
         username: '',
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    signIn() {
+    signIn () {
       const api = `${VITE_APP_URL}/admin/signin`
       this.$http
         .post(api, this.user)

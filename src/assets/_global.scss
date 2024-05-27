@@ -1,71 +1,134 @@
-body {
-    font-family: "Noto Sans TC", sans-serif !important;
-    font-optical-sizing: auto !important;
-    font-weight: 400 !important;
-    font-style: normal !important;
+.NotoSans {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-a {
-    text-decoration: none !important;
+.custom-no-decoration a {
+  text-decoration: none;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
-.btn-primary {
-    &:hover {
-        background: white !important;
-        color: #CA0808 !important;
-    }
+
+.custom-btn-primary a {
+  background: #CA0808;
+  color: white;
 }
 
-.btn-dark {
-    &:hover {
-        background: white !important;
-        color: black !important;
-    }
+.custom-btn-primary a {
+  &:hover {
+    background: white;
+    color: #CA0808;
+    border: 1px solid #ca0808
+  }
+}
+
+.custom-btn-primary button {
+  background: #CA0808;
+  color: white;
+}
+
+.custom-btn-primary button {
+  &:hover {
+    background: white;
+    color: #CA0808;
+    border: 1px solid #ca0808
+  }
+}
+
+.custom-btn-dark button {
+  background: black;
+  color: white
+}
+
+.custom-btn-dark button {
+  &:hover {
+    background: white;
+    color: black;
+    border: 1px solid black
+  }
+}
+
+.custom-btn-dark a {
+  &:hover {
+    background: white;
+    color: black;
+    border: 1px solid black
+  }
 }
 
 .cardHover {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .cardHover:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .scrollTop {
-    position: fixed;
-    bottom: 40px;
-    right: 50px;
-    border: none;
-    background-color: transparent;
-    transition: transform 0.3s ease;
-    z-index: 10;
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+  z-index: 10;
 
-    @media (max-width: 768px) {
-        bottom: 10px;
-        right: 10px;
-    }
+  @media (max-width: 768px) {
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
 .navBarHover:hover {
-    color: #ca0808 !important;
+  color: #ca0808;
 }
 
-.scrollTop:hover {
-    transform: scale(1.5);
-    transition: transform 0.3s ease;
+.icon-Hover span {
+  background-color: #ca0808;
+}
 
-    @media (max-width: 768px) {
-        transform: scale(1.2);
-    }
+.icon-Hover a {
+  color: white
+}
+
+.custom-nav-link {
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.icon-Hover a {
+  &:hover {
+    color: #ca0808;
+  }
+}
+
+
+.scrollTop:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+
+  @media (max-width: 768px) {
+    transform: scale(1.2);
+  }
+}
+
+.layout-Banner-Text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 1rem;
 }

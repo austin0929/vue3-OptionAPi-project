@@ -8,8 +8,12 @@
             <h2 class="fw-bold mb-3 text-light h1">訂單明細</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
-                <li class="breadcrumb-item text-light" aria-current="page">訂單明細</li>
+                <li class="breadcrumb-item">
+                  <a href="#" class="aboutHover">首頁</a>
+                </li>
+                <li class="breadcrumb-item text-light" aria-current="page">
+                  訂單明細
+                </li>
               </ol>
             </nav>
           </div>
@@ -65,7 +69,9 @@
               </tr>
               <tr>
                 <td class="w-50 border">總計</td>
-                <td class="text-end text-primary fw-bold">$ {{ order.total }}</td>
+                <td class="text-end text-primary fw-bold">
+                  $ {{ order.total }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -99,7 +105,9 @@
                 </tr>
                 <tr>
                   <th width="180">付款狀態</th>
-                  <td class="text-primary fw-bold" v-if="order.is_paid">已付款</td>
+                  <td class="text-primary fw-bold" v-if="order.is_paid">
+                    已付款
+                  </td>
                   <td class="text-secondary fw-bold" v-else>未付款</td>
                 </tr>
               </tbody>

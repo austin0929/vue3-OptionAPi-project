@@ -101,7 +101,6 @@ export default {
     },
     updateArticle (article) {
       this.tempArticle = article
-      console.log(this.tempArticle)
       let api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/article`
       let methodsHttp = 'post'
       if (!this.isNewArticle) {
@@ -111,7 +110,6 @@ export default {
       this.$http[methodsHttp](api, { data: this.tempArticle })
         .then((res) => {
           if (res.data.success) {
-            console.log(this.tempArticle)
             this.$refs.articleModal.hideModal()
             this.getArticles()
           }
@@ -130,7 +128,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.articles = res.data.articles
-            console.log(this.articles)
             setTimeout(() => {
               this.isLoading = false
             }, 800)

@@ -20,7 +20,10 @@
         <tr v-for="product in products" :key="product.id">
           <td class="pt-3">
             <a href="#"
-              ><i class="bi bi-x h3 text-danger" @click.prevent="delProduct(product)"></i
+              ><i
+                class="bi bi-x h3 text-danger"
+                @click.prevent="delProduct(product)"
+              ></i
             ></a>
           </td>
           <td></td>
@@ -31,7 +34,10 @@
           <td>{{ product.origin_price }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <div class="bg-success text-center activeRounded" v-if="product.is_enabled">
+            <div
+              class="bg-success text-center activeRounded"
+              v-if="product.is_enabled"
+            >
               <span>啟用</span>
             </div>
             <div class="bg-warning text-center activeRounded" v-else>

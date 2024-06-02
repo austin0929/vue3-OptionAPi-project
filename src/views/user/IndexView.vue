@@ -12,7 +12,9 @@
               特級初榨橄欖油、大蒜、洋蔥、蘑菇、<br />綠橄欖、黑橄欖、新鮮番茄。
             </p>
             <router-link to="/products" class="custom-btn-primary"
-              ><a href="#" class="btn rounded mt-3 btn-lg">立刻選購</a></router-link
+              ><a href="#" class="btn rounded mt-3 btn-lg"
+                >立刻選購</a
+              ></router-link
             >
           </div>
         </div>
@@ -59,7 +61,7 @@
     <div class="row">
       <div class="col-md-6">
         <img
-          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         src="/src/assets/image/food.jpg"
           alt="food-img"
           class="object-fit-cover introduce-img-size"
         />
@@ -67,7 +69,8 @@
       <div class="col-md-4 m-auto text-center">
         <h4 class="mt-4 fw-bold">料理</h4>
         <p class="text-muted">
-          我們的料理充滿了用心和熱情， 每一道菜都是我們精心挑選的食材和細心烹調的結果。
+          我們的料理充滿了用心和熱情，
+          每一道菜都是我們精心挑選的食材和細心烹調的結果。
           我們追求的不僅僅是美味，更是對食物的尊重和愛。
           從新鮮的食材到精湛的廚藝，每一個細節都反映了我們對料理的熱愛和堅持
           。讓我們的用心之作，帶給您最美味的享受和溫馨的回憶。
@@ -77,7 +80,7 @@
     <div class="row flex-row-reverse justify-content-between mt-4">
       <div class="col-md-6">
         <img
-          src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/src/assets/image/chef.jpg"
           alt="cooking-img"
           class="img-fluid introduce-img-size object-fit-cover"
         />
@@ -163,7 +166,8 @@
                 <h2 class="fw-bold mb-3 text-light">潔西卡</h2>
                 <p class="mb-3 text-light">
                   這家餐廳的美食令人驚艷，每一道菜都精心<br />
-                  製作，味道獨特鮮美 。用餐環境<br />舒適， 服務態 度親切周到。特別推薦
+                  製作，味道獨特鮮美 。用餐環境<br />舒適， 服務態
+                  度親切周到。特別推薦
                   他們的招牌菜，絕對是美食愛好者的不容錯過之處。
                 </p>
               </div>
@@ -184,30 +188,37 @@
             <img
               height="200"
               :src="product.imageUrl"
-              class="card-img-top rounded mb-3 cardHover object-fit-cover"
+              class="card-img-top rounded mb-3 object-fit-cover cardHover"
             />
-          </router-link>
-          <a href="#" class="bookmark-icon p-2">
-            <i class="bi bi-heart-fill" @click.prevent="addBookmark(product)"></i>
-          </a>
-          <div class="card-body p-0">
-            <h4>{{ product.title }}</h4>
-            <p class="card-text text-muted mb-2 text-truncate">
-              {{ product.description }}
-            </p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-primary fw-bold me-2">$ {{ product.origin_price }}</span>
-                <p class="mb-0 text-muted text-end d-inline-block">
-                  <del>${{ product.origin_price }}</del>
-                </p>
-              </div>
-              <div class="custom-btn-primary">
-                <button type="type" class="btn" @click="addToCart(product)">
-                  <i class="bi bi-handbag"></i>
-                </button>
+            <div class="card-body p-0">
+              <h4 class="text-dark">{{ product.title }}</h4>
+              <p class="card-text text-muted mb-2 text-truncate">
+                {{ product.description }}
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="text-primary fw-bold me-2"
+                    >$ {{ product.origin_price }}</span
+                  >
+                  <p class="mb-0 text-muted text-end d-inline-block">
+                    <del>${{ product.origin_price }}</del>
+                  </p>
+                </div>
+                <div class="custom-btn-primary">
+                  <a href="#" class="btn" @click.prevent="addToCart(product)">
+                    <i class="bi bi-handbag"></i>
+                  </a>
+                </div>
               </div>
             </div>
+          </router-link>
+          <div>
+            <a href="#" class="p-2 bookmark-icon">
+              <i
+                class="bi bi-heart-fill"
+                @click.prevent="addBookmark(product)"
+              ></i>
+            </a>
           </div>
         </div>
       </div>

@@ -44,20 +44,36 @@
                     id="img"
                     v-model="tempArticle.image"
                   />
-                  <img :src="tempArticle.image" class="w-25 h-50" alt="article-modal-img" />
+                     <input
+                    type="file"
+                    name="file-to-upload"
+                    id="customFile"
+                    @change="uploadFile"
+                    ref="fileInput"
+                    class="form-control mb-3"
+                  />
+                  <img
+                    :src="tempArticle.image"
+                    class="w-25 h-50 object-fit-cover"
+                    alt="article-modal-img"
+                  />
                 </div>
                 <div class="col-6 mb-3">
                   <label for="tag" class="form-label">標籤</label>
                   <ul class="d-flex p-0 custom-btn-primary">
                     <li v-for="item in tags" :key="item">
-                      <button class="btn me-2" type="button" @click.prevent="addTag(item)">
+                      <button
+                        class="btn me-2"
+                        type="button"
+                        @click.prevent="addTag(item)"
+                      >
                         {{ item }}
                       </button>
                     </li>
                   </ul>
                 </div>
                 <div class="col-12 mb-3">
-                  <label for="description" class="form-label">文章描述</label>
+                  <label for="description" class="form-label mt-3">文章描述</label>
                   <input
                     type="text"
                     class="form-control"
@@ -84,15 +100,21 @@
                     type="checkbox"
                     v-model="tempArticle.isPublic"
                   />
-                  <label class="form-check-label ms-1" for="isPublic">是否公開</label>
+                  <label class="form-check-label ms-1" for="isPublic"
+                    >是否公開</label
+                  >
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click="updateArticle">確認</button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-primary" @click="updateArticle">
+            確認
+          </button>
         </div>
       </div>
     </div>
@@ -101,6 +123,7 @@
 
 <script>
 import modalMixins from '@/mixins/modalMixins'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   props: {
@@ -120,6 +143,27 @@ export default {
       const getTime = Math.floor(Date.now() / 1000)
       this.tempArticle.create_at = getTime
       this.$emit('update-article', this.tempArticle)
+    },
+    uploadFile () {
+      const updateFile = this.$refs.fileInput.files[0]
+      const formData = new FormData()
+      formData.append('up-load-file', updateFile)
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/upload`
+      this.$http
+        .post(url, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((res) => {
+          if (res.data.success) {
+            this.tempArticle.image = res.data.imageUrl
+          }
+        }).catch((err) => {
+          if (err.response.data.message) {
+            this.$swal('錯誤', '無法上傳圖片', 'error')
+          }
+        })
     },
     addTag (item) {
       this.tempArticle.tag = [item]

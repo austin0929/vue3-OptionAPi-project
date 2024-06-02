@@ -66,7 +66,9 @@
                   />
                 </div>
                 <div>
-                  <label for="description" class="form-label mt-3">產品描述</label>
+                  <label for="description" class="form-label mt-3"
+                    >產品描述</label
+                  >
                   <textarea
                     id="description"
                     type="text"
@@ -96,7 +98,9 @@
                     :false-value="0"
                     v-model="tempProduct.is_enabled"
                   />
-                  <label class="form-check-label ms-1" for="is_enabled">是否啟用</label>
+                  <label class="form-check-label ms-1" for="is_enabled"
+                    >是否啟用</label
+                  >
                 </div>
               </div>
             </div>
@@ -110,16 +114,29 @@
                   placeholder="請輸入圖片網址"
                   v-model="tempProduct.imageUrl"
                 />
+                  <label for="customFile" class="form-label">上傳圖片</label>
+                  <input
+                    type="file"
+                    name="file-to-upload"
+                    id="customFile"
+                    @change="uploadFile"
+                    ref="fileInput"
+                    class="form-control"
+                  />
                 <img class="img-fluid" :src="tempProduct.imageUrl" />
               </div>
               <div v-if="Array.isArray(tempProduct.imagesUrl)" class="mt-3">
                 <div v-for="(image, key) in tempProduct.imagesUrl" :key="image">
                   <img
                     :src="image"
-                    alt="product-modal-img"
-                    class="img-fluid object-fit-cover w-100"
+                    class="img-fluid object-fit-cover"
+                    style="height: 150px; width: 100%"
                   />
-                  <input type="text" v-model="tempProduct.imagesUrl[key]" class="form-control" />
+                  <input
+                    type="text"
+                    v-model="tempProduct.imagesUrl[key]"
+                    class="form-control"
+                  />
                 </div>
                 <button
                   class="btn btn-outline-primary btn-sm d-block w-100"
@@ -143,8 +160,12 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click="addProduct">確認</button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-primary" @click="addProduct">
+            確認
+          </button>
         </div>
       </div>
     </div>
@@ -153,6 +174,8 @@
 
 <script>
 import modalMixins from '@/mixins/modalMixins'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   props: ['product'],
   data () {
@@ -164,11 +187,37 @@ export default {
   methods: {
     addProduct () {
       this.$emit('update-product', this.tempProduct)
+    },
+    uploadFile () {
+      const updateFile = this.$refs.fileInput.files[0]
+      const formData = new FormData()
+      formData.append('up-load-file', updateFile)
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/upload`
+      this.$http
+        .post(url, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((res) => {
+          if (res.data.success) {
+            this.tempProduct.imageUrl = res.data.imageUrl
+            this.tempProduct.imagesUrl.push(res.data.imageUrl)
+            this.$refs.fileInput.value = ''
+          }
+        }).catch((err) => {
+          if (err.response.data.message) {
+            this.$swal('錯誤', '無法上傳圖片', 'error')
+          }
+        })
     }
   },
   watch: {
     product () {
       this.tempProduct = this.product
+      if (!this.tempProduct.imagesUrl) {
+        this.tempProduct.imagesUrl = []
+      }
     }
   },
   mixins: [modalMixins]

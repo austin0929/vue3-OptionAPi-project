@@ -8,8 +8,12 @@
             <h2 class="fw-bold mb-3 text-light h1">關於我們</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
-                <li class="breadcrumb-item text-light" aria-current="page">關於我們</li>
+                <li class="breadcrumb-item">
+                  <a href="#" class="aboutHover">首頁</a>
+                </li>
+                <li class="breadcrumb-item text-light" aria-current="page">
+                  關於我們
+                </li>
               </ol>
             </nav>
           </div>
@@ -38,7 +42,8 @@
         <div class="mb-5">
           <h3 class="fw-bolder h4">品牌信念</h3>
           <p>
-            我們餐廳的品牌信念源於對美食、 服務和社區的深刻理解和承諾。我們相信每一道菜都
+            我們餐廳的品牌信念源於對美食、
+            服務和社區的深刻理解和承諾。我們相信每一道菜都
             應該蘊含著用心和熱情，每一位顧客都應該得到溫暖和
             尊重的待遇。我們堅信食材的品質是一切的基礎，因此我們
             致力於選擇最優質、最新鮮的食材，並將它們轉化為美味的料理
@@ -52,7 +57,8 @@
         <div class="mb-md-5 mb-3">
           <h3 class="fw-bolder h4">品質把關</h3>
           <p>
-            我們餐廳對品質的把關是我們經營的核 心價值之一。從食材的選擇到菜品的呈現，我們始終
+            我們餐廳對品質的把關是我們經營的核
+            心價值之一。從食材的選擇到菜品的呈現，我們始終
             堅持最嚴格的標準，確保每一道菜都是令人滿意的。首先
             ，我們致力於選擇優質的食材，嚴格把關產品的新鮮度和質
             量，確保每一個食材都是安全健康的。在烹飪過程中，我們的廚師

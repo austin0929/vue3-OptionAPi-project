@@ -3,7 +3,7 @@
     <div class="bg-black fixed-top py-3">
       <nav class="navbar navbar-expand-lg navbar-light container px-3 px-0">
         <router-link to="/" class="navbar-brand text-light fw-bold">
-          <img src="/public/daddy.jpg" width="30" alt="logo-img" />
+          <img src="/src/assets/image/logo.jpg" width="30" alt="logo-img" @click.stop/>
           FishDaddy</router-link
         >
         <button
@@ -84,8 +84,6 @@ export default {
       const navbarCollapse = document.querySelector('.navbar-collapse')
       if (navbarCollapse.classList.contains('show')) {
         navbarCollapse.classList.remove('show')
-      } else {
-        navbarCollapse.classList.add('show')
       }
     }
   },

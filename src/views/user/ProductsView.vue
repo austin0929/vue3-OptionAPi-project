@@ -163,6 +163,7 @@ export default {
             this.searchKeyword = ''
             this.products = res.data.products
             this.pagination = res.data.pagination
+            console.log(this.products)
             setTimeout(() => {
               this.isLoading = false
             }, 800)

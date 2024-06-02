@@ -157,46 +157,45 @@
               v-for="product in randomProducts"
               :key="product.id"
             >
-              <div class="card border p-2 mb-4 position-relative">
-                <a href="#" @click.prevent>
-                  <img
-                    height="200"
-                    :src="product.imageUrl"
-                    class="card-img-top rounded mb-3 object-fit-cover cardHover"
-                    @click="getNewProductId(product.id)"
-                  />
-                </a>
-                <a href="#" class="p-2 bookmark-icon">
-                  <i class="bi bi-heart-fill"></i>
-                </a>
-                <div class="card-body p-0">
-                  <h4>{{ product.title }}</h4>
-                  <p class="card-text text-muted mb-2 text-truncate">
-                    {{ product.description }}
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
+     <div class="card border p-2 mb-4 position-relative">
+         <a href="#" @click.prevent>
+            <img
+              height="200"
+              :src="product.imageUrl"
+              class="card-img-top rounded mb-3 object-fit-cover cardHover"
+            />
+            <div class="card-body p-0">
+              <h4 class="text-dark">{{ product.title }}</h4>
+              <p class="card-text text-muted mb-2 text-truncate">
+                {{ product.description }}
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="text-primary fw-bold me-2"
+                    >$ {{ product.origin_price }}</span
                   >
-                    <div>
-                      <span class="text-primary fw-bold me-2"
-                        >$ {{ product.origin_price }}</span
-                      >
-                      <p class="mb-0 text-muted text-end d-inline-block">
-                        <del>${{ product.origin_price }}</del>
-                      </p>
-                    </div>
-                    <div class="custom-btn-primary">
-                      <button
-                        type="type"
-                        class="btn"
-                        @click="addToCart(product)"
-                      >
-                        <i class="bi bi-handbag"></i>
-                      </button>
-                    </div>
-                  </div>
+                  <p class="mb-0 text-muted text-end d-inline-block">
+                    <del>${{ product.origin_price }}</del>
+                  </p>
+                </div>
+                <div class="custom-btn-primary">
+                  <a href="#" class="btn" @click.prevent="addToCart(product)">
+                    <i class="bi bi-handbag"></i>
+                  </a>
                 </div>
               </div>
+            </div>
+          </a>
+          <div>
+            <a href="#" class="p-2 bookmark-icon">
+              <i
+                class="bi bi-heart-fill"
+                @click.prevent="addBookmark(product)"
+              ></i>
+            </a>
+          </div>
+        </div>
+
             </div>
           </div>
         </div>

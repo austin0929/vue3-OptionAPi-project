@@ -4,7 +4,7 @@
     <div class="container">
       <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
         <router-link class="text-white h5 fw-bold" to="/">
-          <img src="/src/assets/image/logo.jpg" width="30" alt="logo-img" />
+          <img src="/src/assets/img/logo/logo.jpg" width="30" alt="logo圖" />
           FishDaddy</router-link
         >
         <ul class="d-flex list-unstyled mb-0 h4">

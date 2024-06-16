@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -8,7 +8,7 @@
             <h2 class="fw-bold mb-3 text-light h1">收藏列表</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item"><a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a></li>
                 <li class="breadcrumb-item text-light" aria-current="page">收藏列表</li>
               </ol>
             </nav>
@@ -54,7 +54,7 @@
           <tbody style="line-height: 36px">
             <tr v-for="(mark, index) in bookmark" :key="index">
               <td class="text-center">
-                <a href="#"
+                <a href="#" @click.prevent
                   ><i class="bi bi-trash" @click.prevent="delBookmark(mark, index)"></i
                 ></a>
               </td>
@@ -64,7 +64,7 @@
                     class="object-fit-cover d-none d-lg-inline-block me-3"
                     height="50"
                     width="100"
-                    alt="bookmark-img"
+                    alt="收藏產品圖"
                     :src="mark.imageUrl"
                   />
                   <h2 class="h6 mt-2 mt-lg-0">{{ mark.title }}</h2>

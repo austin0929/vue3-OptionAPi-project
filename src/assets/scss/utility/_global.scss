@@ -20,6 +20,13 @@ ol {
   list-style: none;
 }
 
+.layout-banner-txt-Hover {
+  color: white;
+}
+
+.layout-banner-txt-Hover:hover {
+  color: #CA0808;
+}
 
 .custom-btn-primary a {
   background: #CA0808;
@@ -131,4 +138,11 @@ ol {
   z-index: 2;
   color: white;
   font-size: 1rem;
+}
+
+.bookmark-icon {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  font-size: 1.2rem;
 }

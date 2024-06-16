@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -9,13 +9,11 @@
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
                 <li class="breadcrumb-item">
-                  <router-link to="/"
-                    ><a href="#" class="aboutHover">首頁</a></router-link
-                  >
+                  <router-link to="/" class="layout-banner-txt-Hover">首頁</router-link>
                 </li>
                 <li class="breadcrumb-item text-light" aria-current="page">
-                  <router-link to="/products"
-                    ><a href="#" class="aboutHover">產品列表</a></router-link
+                  <router-link to="/products" class="layout-banner-txt-Hover"
+                    >產品列表</router-link
                   >
                 </li>
                 <li class="breadcrumb-item text-light" aria-current="page">
@@ -38,6 +36,7 @@
               class="img-fluid rounded object-fit-cover"
               style="height: 350px; width: 100%"
               :src="productImg"
+              alt="單一產品放大圖"
             />
             <div class="my-3 row">
               <img
@@ -47,6 +46,7 @@
                 style="height: 80px; cursor: pointer"
                 :src="image"
                 @click.prevent="productImg = image"
+                alt="單一產品縮小圖"
               />
             </div>
           </div>
@@ -157,45 +157,51 @@
               v-for="product in randomProducts"
               :key="product.id"
             >
-     <div class="card border p-2 mb-4 position-relative">
-         <a href="#" @click.prevent>
-            <img
-              height="200"
-              :src="product.imageUrl"
-              class="card-img-top rounded mb-3 object-fit-cover cardHover"
-            />
-            <div class="card-body p-0">
-              <h4 class="text-dark">{{ product.title }}</h4>
-              <p class="card-text text-muted mb-2 text-truncate">
-                {{ product.description }}
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="card border p-2 mb-4 position-relative">
+                <a href="#" @click.prevent="chooseProduct(product)">
+                  <img
+                    height="200"
+                    :src="product.imageUrl"
+                    class="card-img-top rounded mb-3 object-fit-cover cardHover"
+                    alt="其他相關產品圖"
+                  />
+                  <div class="card-body p-0">
+                    <h4 class="text-dark">{{ product.title }}</h4>
+                    <p class="card-text text-muted mb-2 text-truncate">
+                      {{ product.description }}
+                    </p>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div>
+                        <span class="text-primary fw-bold me-2"
+                          >$ {{ product.origin_price }}</span
+                        >
+                        <p class="mb-0 text-muted text-end d-inline-block">
+                          <del>${{ product.origin_price }}</del>
+                        </p>
+                      </div>
+                      <div class="custom-btn-primary">
+                        <a
+                          href="#"
+                          class="btn"
+                          @click.prevent="addToCart(product)"
+                        >
+                          <i class="bi bi-handbag"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </a>
                 <div>
-                  <span class="text-primary fw-bold me-2"
-                    >$ {{ product.origin_price }}</span
-                  >
-                  <p class="mb-0 text-muted text-end d-inline-block">
-                    <del>${{ product.origin_price }}</del>
-                  </p>
-                </div>
-                <div class="custom-btn-primary">
-                  <a href="#" class="btn" @click.prevent="addToCart(product)">
-                    <i class="bi bi-handbag"></i>
+                  <a href="#" class="p-2 bookmark-icon" @click.prevent>
+                    <i
+                      class="bi bi-heart-fill"
+                      @click.prevent="addBookmark(product)"
+                    ></i>
                   </a>
                 </div>
               </div>
-            </div>
-          </a>
-          <div>
-            <a href="#" class="p-2 bookmark-icon">
-              <i
-                class="bi bi-heart-fill"
-                @click.prevent="addBookmark(product)"
-              ></i>
-            </a>
-          </div>
-        </div>
-
             </div>
           </div>
         </div>
@@ -233,6 +239,11 @@ export default {
     getNewProductId (id) {
       this.productId = id
       this.getProduct()
+    },
+    chooseProduct (product) {
+      this.product = { ...product }
+      this.productImages = [...product.imagesUrl]
+      this.productImg = product.imageUrl
     },
     getProducts () {
       const api = `${VITE_APP_URL}/api/${VITE_APP_PATH}/products`
@@ -302,3 +313,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .custom-btn-info a {
+  background-color: #f5f5f5;
+  border: 1px solid #dee2e6;
+}
+
+.custom-btn-info a {
+  &:hover {
+      background-color: #CA0808;
+      color: white;
+    }
+}
+
+.bookmark-icon {
+  position: absolute;
+    right: 15px;
+    top: 5px;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+</style>

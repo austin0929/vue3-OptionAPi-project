@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -8,7 +8,7 @@
             <h2 class="fw-bold mb-3 text-light h1">部落格文章</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item"><a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a></li>
                 <li class="breadcrumb-item text-light" aria-current="page">部落格文章</li>
               </ol>
             </nav>
@@ -24,7 +24,7 @@
         <div>
           <img
             :src="article.image"
-            alt="blog-img"
+            alt="部落格文章圖"
             class="object-fit-cover rounded mb-4"
             height="600"
             width="100%"

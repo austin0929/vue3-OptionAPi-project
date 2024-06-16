@@ -19,7 +19,7 @@
       <tbody>
         <tr v-for="product in products" :key="product.id">
           <td class="pt-3">
-            <a href="#"
+            <a href="#" @click.prevent
               ><i
                 class="bi bi-x h3 text-danger"
                 @click.prevent="delProduct(product)"
@@ -28,7 +28,7 @@
           </td>
           <td></td>
           <td>
-            <img class="" width="80" height="50" :src="product.imageUrl" />
+            <img class="" width="80" height="50" :src="product.imageUrl"  alt="後台產品圖"/>
             {{ product.title }}
           </td>
           <td>{{ product.origin_price }}</td>
@@ -175,3 +175,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .productTable {
+  line-height: 40px;
+}
+
+.activeRounded {
+  border-radius: 50px;
+}
+</style>

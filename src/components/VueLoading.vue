@@ -1,5 +1,5 @@
 <template>
-  <VueLoading
+  <VueLoading :active="isLoading"
     ><div class="loadingio-spinner-spin-nq4q5u6dq7r">
       <div class="ldio-x2uulkbinbj">
         <div><div></div></div>

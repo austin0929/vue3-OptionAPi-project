@@ -1,20 +1,20 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div class="mb-md-5 mb-3">
     <div class="indexBanner">
       <div class="container">
         <div>
           <div>
             <h2 class="fw-bold mb-3 text-light h1 mb-5">
-              堅持品質的美味用心<br />烹飪給每一位顧客
+              堅持品質的美味用心
+              <p>烹飪給每一位顧客</p>
             </h2>
-            <p class="mb-3 text-light">
-              特級初榨橄欖油、大蒜、洋蔥、蘑菇、<br />綠橄欖、黑橄欖、新鮮番茄。
-            </p>
+            <p class="mb-0 text-light">特級初榨橄欖油、大蒜、洋蔥、蘑菇、</p>
+            <p class="text-light">綠橄欖、黑橄欖、新鮮番茄。</p>
             <router-link to="/products" class="custom-btn-primary"
-              ><a href="#" class="btn rounded mt-3 btn-lg"
-                >立刻選購</a
-              ></router-link
+              ><button type="button" class="btn rounded mt-3 btn-lg">
+                立刻選購
+              </button></router-link
             >
           </div>
         </div>
@@ -61,8 +61,8 @@
     <div class="row">
       <div class="col-md-6">
         <img
-         src="/src/assets/image/food.jpg"
-          alt="food-img"
+          src="/src/assets/img/indexPage/food.jpg"
+          alt="主頁描述料理圖"
           class="object-fit-cover introduce-img-size"
         />
       </div>
@@ -80,8 +80,8 @@
     <div class="row flex-row-reverse justify-content-between mt-4">
       <div class="col-md-6">
         <img
-          src="/src/assets/image/chef.jpg"
-          alt="cooking-img"
+          src="/src/assets/img/indexPage/chef.jpg"
+          alt="主頁描述廚師圖"
           class="img-fluid introduce-img-size object-fit-cover"
         />
       </div>
@@ -115,11 +115,11 @@
             <div class="row justify-content-center my-auto">
               <div class="col-md-4 text-center">
                 <img
-                  src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="customer-img2"
+                  src="/src/assets/img/indexPage/customer1.jpg"
+                  alt="顧客評價圖"
                   class="mb-3 object-fit-cover swiper-customer-img-size"
                 />
-                <h2 class="fw-bold mb-3 text-light">賈伯斯</h2>
+                <h2 class="fw-bold mb-3 text-light">愛麗莎</h2>
                 <p class="mb-3 text-light">
                   這家餐廳簡直是天堂！他們的牛排烤得恰到好處，
                   口感鮮嫩多汁，每一口都是極致享受。服務態度親切
@@ -137,14 +137,14 @@
             <div class="row justify-content-center my-auto">
               <div class="col-md-4 text-center">
                 <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="customer-img2"
+                 src="/src/assets/img/indexPage/customer2.jpg"
+                  alt="顧客評價圖"
                   class="mb-3 object-fit-cover swiper-customer-img-size"
                 />
                 <h2 class="fw-bold mb-3 text-light">珍妮佛</h2>
-                <p class="mb-3 text-light">
-                  這家餐廳的披薩味道絕佳，餅皮鬆軟香脆，配料新<br />
-                  鮮豐富。特色口味獨具創意，令人回味無窮。<br />
+                <p class="mb-0 text-light">
+                  這家餐廳的披薩味道絕佳，餅皮鬆軟香脆，配料新
+                  鮮豐富。特色口味獨具創意，令人回味無窮。
                   服務態度親切，環境舒適，是品嚐美味披薩的絕佳選擇。
                 </p>
               </div>
@@ -159,15 +159,14 @@
             <div class="row justify-content-center my-auto">
               <div class="col-md-4 text-center">
                 <img
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="customer-img3"
+                  src="/src/assets/img/indexPage/customer3.jpg"
+                  alt="顧客評價圖"
                   class="mb-3 object-fit-cover swiper-customer-img-size"
                 />
                 <h2 class="fw-bold mb-3 text-light">潔西卡</h2>
-                <p class="mb-3 text-light">
-                  這家餐廳的美食令人驚艷，每一道菜都精心<br />
-                  製作，味道獨特鮮美 。用餐環境<br />舒適， 服務態
-                  度親切周到。特別推薦
+                <p class="mb-0 text-light">
+                  這家餐廳的美食令人驚艷，每一道菜都精心 製作，味道獨特鮮美
+                  。用餐環境 舒適， 服務態 度親切周到。特別推薦
                   他們的招牌菜，絕對是美食愛好者的不容錯過之處。
                 </p>
               </div>
@@ -175,20 +174,25 @@
           </div>
         </div>
       </swiper-slide>
-      ...
     </swiper>
   </div>
 
   <div class="container mb-md-5 mb-3">
     <h2 class="text-center fw-bold mb-4">我們的菜單</h2>
-    <div class="row">
-      <div class="col-md-3" v-for="product in randomProducts" :key="product.id">
+
+    <div class="row mb-6">
+      <div
+        class="col-lg-3 col-md-6"
+        v-for="product in randomProducts"
+        :key="product.id"
+      >
         <div class="card border p-2 mb-4 position-relative">
-          <router-link :to="`/product/${product.id}`">
+          <a href="#" @click.prevent="this.$router.push(`/product/${product.id}`)">
             <img
               height="200"
               :src="product.imageUrl"
               class="card-img-top rounded mb-3 object-fit-cover cardHover"
+              alt="其他相關產品圖"
             />
             <div class="card-body p-0">
               <h4 class="text-dark">{{ product.title }}</h4>
@@ -211,9 +215,9 @@
                 </div>
               </div>
             </div>
-          </router-link>
+          </a>
           <div>
-            <a href="#" class="p-2 bookmark-icon">
+            <a href="#" class="p-2 bookmark-icon" @click.prevent>
               <i
                 class="bi bi-heart-fill"
                 @click.prevent="addBookmark(product)"
@@ -301,3 +305,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .indexBanner {
+  background-image: url('/src/assets/img/indexPage/indexBanner.jpg');
+  background-position: center center;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    height: 65vh
+  }
+}
+
+.index-service-icon {
+  font-size: 3rem;
+}
+
+.introduce-img-size {
+  max-height: 450px;
+  width: 100%;
+}
+</style>

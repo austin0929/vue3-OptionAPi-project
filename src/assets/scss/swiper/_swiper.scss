@@ -1,0 +1,42 @@
+.swiper-img-one {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/src/assets/img/swiper/swiper1.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(30%);
+  z-index: -1;
+}
+
+.swiper-img-two {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/src/assets/img/swiper/swiper2.jpg');
+  background-position: center center;
+  filter: brightness(30%);
+  z-index: -1;
+}
+
+.swiper-img-three {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/src/assets/img/swiper/swiper3.jpg');
+  background-position: center center;
+  filter: brightness(30%);
+  z-index: -1;
+}
+
+.swiper-customer-img-size {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}

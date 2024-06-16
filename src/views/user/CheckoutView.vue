@@ -1,5 +1,5 @@
   <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -8,7 +8,7 @@
             <h2 class="fw-bold mb-3 text-light h1">訂單資訊</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item"><a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a></li>
                 <li class="breadcrumb-item text-light" aria-current="page">訂單資訊</li>
               </ol>
             </nav>
@@ -37,7 +37,7 @@
           <h2 class="h4 mb-3">訂購人資料</h2>
           <VForm ref="form" v-slot="{ errors }" @submit="sendOrder">
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
               <VField
                 id="email"
                 name="信箱"
@@ -51,7 +51,7 @@
               <ErrorMessage name="信箱" class="invalid-feedback"></ErrorMessage>
             </div>
             <div class="mb-3">
-              <label for="name" class="form-label">收件人姓名</label>
+              <label for="name" class="form-label">收件人姓名 <span class="text-danger">*</span></label>
               <VField
                 id="name"
                 name="姓名"
@@ -65,7 +65,7 @@
               <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
             </div>
             <div class="mb-3">
-              <label for="tel" class="form-label">收件人電話</label>
+              <label for="tel" class="form-label">收件人電話 <span class="text-danger">*</span></label>
               <VField
                 id="tel"
                 name="電話"
@@ -79,7 +79,7 @@
               <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
             </div>
             <div class="mb-3">
-              <label for="address" class="form-label">收件人地址</label>
+              <label for="address" class="form-label">收件人地址 <span class="text-danger">*</span></label>
               <VField
                 id="address"
                 name="地址"

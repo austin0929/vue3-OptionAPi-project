@@ -1,0 +1,10 @@
+@import 'bootstrap/scss/functions';
+
+@import './helpers/variables';
+@import './utility/global';
+@import './swiper/swiper';
+@import './utility/layoutBanner';
+@import './utility/loading';
+@import './utility/stepper';
+
+@import 'bootstrap/scss/bootstrap.scss';

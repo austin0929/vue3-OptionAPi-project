@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -9,7 +9,7 @@
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
                 <li class="breadcrumb-item">
-                  <a href="#" class="aboutHover">首頁</a>
+                  <a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a>
                 </li>
                 <li class="breadcrumb-item text-light" aria-current="page">
                   關於我們
@@ -93,3 +93,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.aboutLineHeight {
+  line-height: 28px;
+}
+</style>

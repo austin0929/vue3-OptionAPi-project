@@ -4,7 +4,7 @@
     <div class="text-end my-md-5 my-3 custom-btn-primary">
       <button class="btn btn-lg" type="button" @click="openArticleModal">新增文章</button>
     </div>
-    <table class="table table-striped productTable">
+    <table class="table table-striped articleTable">
       <thead>
         <tr>
           <th width="10"></th>
@@ -26,7 +26,7 @@
           </td>
           <td></td>
           <td>
-            <img class="" width="80" height="50" :src="article.image" />
+            <img class="" width="80" height="50" :src="article.image" alt="後台部落格圖"/>
             {{ article.title }}
           </td>
           <td>
@@ -160,3 +160,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .articleTable {
+  line-height: 40px;
+}
+
+.activeRounded {
+  border-radius: 50px;
+}
+</style>

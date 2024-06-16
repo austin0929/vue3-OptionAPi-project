@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -8,7 +8,7 @@
             <h2 class="fw-bold mb-3 text-light h1">部落格</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item"><a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a></li>
                 <li class="breadcrumb-item text-light" aria-current="page">部落格</li>
               </ol>
             </nav>
@@ -20,12 +20,12 @@
 
   <div class="container">
     <div class="row justify-content-center mb-lg-5 mb-1">
-      <div class="col-lg-10 mb-4" v-for="article in articles" :key="article.id">
+      <div class="col-lg-10 mb-5" v-for="article in articles" :key="article.id">
         <a href="#" class="row align-items-center" @click.prevent="toBlog(article)">
           <div class="col-md-5">
             <img
               :src="article.image"
-              alt="blog-img"
+              alt="部落格列表圖"
               class="object-fit-cover img-fluid rounded mb-md-0 mb-3"
             />
           </div>
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <PaginationComponent :pages="pagination" @update-page="getBlogs"></PaginationComponent>
+  <PaginationComponent :pages="pagination" @update-page="getBlogs"/>
 </template>
 
 <script>

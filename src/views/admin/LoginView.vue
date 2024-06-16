@@ -3,7 +3,7 @@
     <div class="row justify-content-center align-items-center vh-100">
       <div class="col-5">
         <div class="text-center mb-3">
-          <img src="/src/assets/image/logo.jpg" width="90" alt="logo-img" />
+          <img src="/src/assets/img/logo/logo.jpg" width="90" alt="logo圖" />
           <h1 class="fw-bold text-center">FishDaddy</h1>
           <span class="h3 text-center d-block fw-normal text-secondary">管理者登入</span>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <VueLoading :active="isLoading"></VueLoading>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -8,7 +8,7 @@
             <h2 class="fw-bold mb-3 text-light h1">購物車</h2>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
-                <li class="breadcrumb-item"><a href="#" class="aboutHover">首頁</a></li>
+                <li class="breadcrumb-item"><a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a></li>
                 <li class="breadcrumb-item text-light" aria-current="page">購物車</li>
               </ol>
             </nav>
@@ -66,7 +66,7 @@
                         class="object-fit-cover d-none d-lg-inline-block me-3"
                         height="50"
                         width="100"
-                        alt="card-img"
+                        alt="購物車產品圖"
                         :src="cart.product.imageUrl"
                       />
                       <h2 class="mt-2 mt-lg-0 table-cart-font">
@@ -74,7 +74,7 @@
                       </h2>
                     </div>
                   </td>
-                  <td class="text-primary">$ {{ cart.product.origin_price }}</td>
+                  <td class="text-primary table-cart-font">$ {{ cart.product.origin_price }}</td>
                   <td>
                     <div class="bg-light d-flex">
                       <button class="qtyButton" type="button" @click="updateQty(cart, false)">
@@ -93,7 +93,7 @@
                       </button>
                     </div>
                   </td>
-                  <td class="text-primary text-end">$ {{ cart.product.price * cart.qty }}</td>
+                  <td class="text-primary text-end table-cart-font">$ {{ cart.product.price * cart.qty }}</td>
                 </tr>
               </tbody>
             </table>
@@ -146,7 +146,7 @@
       </div>
     </div>
   </template>
-  <DelAllCartModal ref="delAllCartModal"></DelAllCartModal>
+  <DelAllCartModal ref="delAllCartModal"/>
 </template>
 
 <script>
@@ -214,3 +214,48 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .qtyButton {
+  width: 50px;
+  height: 100%;
+  border: 1px solid #d3d4d5;
+  background-color: #f8f9fa;
+
+  @media (max-width: 768px) {
+    width: 40px;
+  }
+}
+
+.table-cart-font {
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+      padding-top: 5px;
+  }
+}
+
+.table-qty-width {
+  width: 140px;
+
+  @media (max-width: 768px) {
+    width: 70px;
+  }
+}
+
+.qtyButton:hover {
+  background-color: #d3d4d5;
+}
+
+.qtyInput {
+  width: 50px;
+  border: 1px solid #d3d4d5;
+  background-color: #f8f9fa;
+  outline: none;
+
+  @media (max-width: 768px) {
+    width: 40px;
+  }
+}
+</style>

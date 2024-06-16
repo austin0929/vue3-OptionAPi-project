@@ -1,5 +1,5 @@
 <template>
-  <VueLoadingVue :active="isLoading"></VueLoadingVue>
+  <VueLoading :active="isLoading"/>
   <div>
     <div class="layoutBanner mb-md-5 mb-3">
       <div class="container">
@@ -9,7 +9,7 @@
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb d-flex justify-content-center">
                 <li class="breadcrumb-item">
-                  <a href="#" class="aboutHover">首頁</a>
+                  <a href="#" class="layout-banner-txt-Hover" @click.prevent>首頁</a>
                 </li>
                 <li class="breadcrumb-item text-light" aria-current="page">
                   產品列表
@@ -80,6 +80,7 @@
                   height="200"
                   :src="product.imageUrl"
                   class="card-img-top rounded mb-3 object-fit-cover cardHover"
+                  alt="產品圖片"
                 />
                 <div class="card-body p-0">
                   <h4 class="text-dark">{{ product.title }}</h4>
@@ -110,7 +111,7 @@
                 </div>
               </router-link>
               <div>
-                <a href="#" class="p-2 bookmark-icon">
+                <a href="#" class="p-2 bookmark-icon" @click.prevent>
                   <i
                     class="bi bi-heart-fill"
                     @click.prevent="addBookmark(product)"
@@ -123,7 +124,7 @@
       </div>
     </div>
   </div>
-  <Pagination :pages="pagination" @update-page="getProducts"></Pagination>
+  <Pagination :pages="pagination" @update-page="getProducts"/>
 </template>
 
 <script>
@@ -131,13 +132,13 @@ import Pagination from '@/components/PaginationComponent.vue'
 import cartStore from '@/stores/cartStore.js'
 import bookmarkStore from '@/stores/bookmarkStore.js'
 import { mapActions } from 'pinia'
-import VueLoadingVue from '@/components/VueLoading.vue'
+import VueLoading from '@/components/VueLoading.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
   components: {
     Pagination,
-    VueLoadingVue
+    VueLoading
   },
   data () {
     return {
@@ -229,3 +230,36 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  .productSelect {
+  width: 25%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.searchAndSort {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.productLinkHover {
+  color: #54595F;
+}
+
+.productLinkHover:hover {
+  color: #CA0808;
+}
+
+@media (max-width: 768px) {
+  .productSelect {
+    width: 100%;
+  }
+}
+</style>

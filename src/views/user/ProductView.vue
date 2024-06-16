@@ -185,7 +185,7 @@
                         <a
                           href="#"
                           class="btn"
-                          @click.prevent="addToCart(product)"
+                          @click.prevent.stop="addToCart(product)"
                         >
                           <i class="bi bi-handbag"></i>
                         </a>

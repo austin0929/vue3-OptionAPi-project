@@ -209,7 +209,7 @@
                   </p>
                 </div>
                 <div class="custom-btn-primary">
-                  <a href="#" class="btn" @click.prevent="addToCart(product)">
+                  <a href="#" class="btn" @click.prevent.stop="addToCart(product)">
                     <i class="bi bi-handbag"></i>
                   </a>
                 </div>
